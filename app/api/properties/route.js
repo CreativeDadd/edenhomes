@@ -1,6 +1,6 @@
 // app/api/properties/route.js
 import { NextResponse } from 'next/server';
-import { connectToDatabase } from '../../lib/mongodb';
+import  connectToDatabase  from '../../lib/mongodb';
 import Property from '../../models/Property';
 
 export async function GET() {

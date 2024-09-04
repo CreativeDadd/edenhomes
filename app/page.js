@@ -108,9 +108,10 @@
 
 
 
-import { connectToDatabase } from './lib/mongodb';
+import  connectToDatabase  from './lib/mongodb';
 import Property from './models/Property';
 import PropertyCard from './components/PropertyCard';
+import ContactSection from './components/ContactSection';
 
 
 
@@ -131,6 +132,7 @@ export default async function HomePage() {
           ))
         )}
       </div>
+      <ContactSection />
     </main>
   );
 }

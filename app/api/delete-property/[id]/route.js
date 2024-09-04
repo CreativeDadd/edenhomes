@@ -1,4 +1,4 @@
-import { connectToDatabase } from '../../../lib/mongodb';
+import  connectToDatabase  from '../../../lib/mongodb';
 import Property from '../../../models/Property';
 
 export async function DELETE(req, { params }) {

@@ -36,7 +36,8 @@
 
 // app/view-property/[id]/page.js
 
-import { connectToDatabase } from '../../lib/mongodb';
+import Link from 'next/link';
+import  connectToDatabase  from '../../lib/mongodb';
 import Property from '../../models/Property';
 
 
@@ -59,7 +60,11 @@ export default async function PropertyDetailsPage({ params }) {
       <p className="text-gray-400 line-through text-lg">₦{property.price}</p>
       <p className="text-orange-500 font-bold text-2xl mb-4">₦{property.discountPrice} ({property.discountPercent}% OFF)</p>
       <p className="text-gray-700 text-lg mb-4">Location: {property.location}</p>
-      <button className="bg-blue-500 text-white py-2 px-4 rounded">Contact Agent</button>
+      <div className="flex gap-5 mt-7">
+      <Link href="/contact" className="bg-blue-500 text-white py-2 px-4 rounded">Contact Agent</Link>
+      <button className="bg-[orange] text-white py-2 px-4 rounded">Book A Tour</button>
+      <button className="bg-[#ff4500] text-white py-2 px-4 rounded">Add To Cart</button>
+      </div>
     </div>
   );
 }

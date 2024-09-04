@@ -92,10 +92,6 @@ export default function AdminPage() {
   }, []);
   
 
-
-
-
-
   const handleDelete = async (id) => {
     const response = await fetch(`/api/delete-property/${id}`, {
       method: 'DELETE',
@@ -118,7 +114,10 @@ export default function AdminPage() {
       <h1 className="text-4xl font-bold text-center mb-6">Admin Dashboard</h1>
       <div>
         <Link href="/add-property" className="my-6 sm:text-xl font-semibold">
-        <button className="bg-green-400] text-white py-2 px-4 rounded">+ADD NEW PROPERTY</button>
+        <button className="bg-green-500 text-white py-2 px-4 rounded">+ADD NEW PROPERTY</button>
+        </Link> 
+        <Link href="/admin/contacts" className="my-6 sm:text-xl font-semibold">
+          <button className="bg-green-500 text-white py-2 px-4 rounded">Check Messages</button>
         </Link> 
       </div>
       {loading ? (

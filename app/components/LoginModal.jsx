@@ -231,7 +231,7 @@ export default function LoginModal({ isOpen, onClose }) {
           <div className="flex justify-end">
             <button
               onClick={handleLogin}
-              className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition duration-200"
+              className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition duration-200"
             >
               Log In
             </button>
