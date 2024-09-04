@@ -71,9 +71,9 @@ export default function PropertyCard({ property }) {
               View Details
             </button>
           </Link>
-          <button className="bg-black text-white py-2 px-4 rounded hover:bg-gray-800 transition-colors">
+          <Link href="/contact" className="bg-black text-white py-2 px-4 rounded hover:bg-gray-800 transition-colors">
             Contact Agent
-          </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -8,3 +8,25 @@ export async function GET() {
   const properties = await Property.find({});
   return NextResponse.json(properties);
 }
+
+
+
+
+
+export async function DELETE(req, { params }) {
+  try {
+    await connectToDatabase();
+    const { id } = params;
+
+    const result = await Property.findByIdAndDelete(id);
+
+    if (!result) {
+      return new NextResponse('Property not found', { status: 404 });
+    }
+
+    return new NextResponse('Property deleted successfully', { status: 200 } );
+  } catch (error) {
+    console.error('Error deleting property:', error);
+    return new NextResponse('Failed to delete property', { status: 500 } );
+  }
+}
