@@ -111,16 +111,19 @@
 import  connectToDatabase  from './lib/mongodb';
 import Property from './models/Property';
 import PropertyCard from './components/PropertyCard';
-import ContactSection from './components/ContactSection';
+import HeroSection from './components/HeroSection';
+import About from './components/About'
 
 
 
 export default async function HomePage() {
   await connectToDatabase();
   const properties = await Property.find({}).lean();
+  console.log(properties)
 
   return (
     <main className="container mx-auto p-6">
+      <HeroSection  />
   
       <h1 className="text-5xl font-bold text-center mb-10 text-black">Available Properties</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -128,11 +131,11 @@ export default async function HomePage() {
           <p className="text-center text-gray-500">No properties available.</p>
         ) : (
           properties.map((property) => (
-            <PropertyCard key={property._id} property={property} />
+            <PropertyCard key={property._id}  property={property} />
           ))
         )}
       </div>
-      <ContactSection />
+      <About />
     </main>
   );
 }

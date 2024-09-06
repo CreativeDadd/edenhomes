@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import cloudinary from 'cloudinary';
+// import cloudinary from 'cloudinary';
+import { v2 as cloudinary } from "cloudinary";
 
 // Configure Cloudinary with your credentials
 cloudinary.config({
@@ -11,10 +12,12 @@ cloudinary.config({
 export async function POST(req) {
   const formData = await req.formData();
   const file = formData.get('file');
+  console.log(file)
 
   try {
     const uploadedImage = await cloudinary.v2.uploader.upload(file.path, {
-      folder: 'property-images', // Optional: specify folder in Cloudinary
+      folder: 'real_estate', // Optional: specify folder in Cloudinary
+
     });
 
     return NextResponse.json({ url: uploadedImage.secure_url });
