@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function AboutSection() {
   return (
@@ -20,7 +21,7 @@ export default function AboutSection() {
             </Link>
           </div>
           <div className="lg:w-1/2 mt-8 lg:mt-0">
-            <img
+            <Image
               src="/images/property_1.jpg" // Make sure to add an appropriate image
               alt="About Us"
               className="w-full h-auto rounded-lg shadow-lg"

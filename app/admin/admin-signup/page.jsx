@@ -1,4 +1,4 @@
-import { useState } from 'react';
+"use client"
 import Signup from '@/app/components/Signup';
 
 export default function LoginPage() {

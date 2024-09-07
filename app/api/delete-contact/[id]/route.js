@@ -1,6 +1,6 @@
 // app/api/delete-contact/[id]/route.js
-import connectToDatabase from '../../../../lib/mongodb';
-import Contact from '../../../../models/Contact';
+import connectToDatabase from '@/app/lib/mongodb';
+import Contact from '@/app/models/Contact';
 
 export async function DELETE(request, { params }) {
   const { id } = params;

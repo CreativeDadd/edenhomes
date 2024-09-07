@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function Testimonials() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -57,7 +58,7 @@ export default function Testimonials() {
         <div className="relative max-w-4xl mx-auto">
           <div className="bg-white text-gray-800 p-8 rounded-lg shadow-lg">
             <div className="flex items-center mb-6">
-              <img
+              <Image
                 src={testimonials[currentTestimonial].image}
                 alt={testimonials[currentTestimonial].name}
                 className="w-20 h-20 rounded-full mr-4"

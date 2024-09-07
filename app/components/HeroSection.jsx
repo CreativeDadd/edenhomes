@@ -38,7 +38,7 @@ import Link from "next/link";
 //     );
 //   }
   
-
+import Image from "next/image";
 
 export default function HeroSection() {
     return (
@@ -66,7 +66,7 @@ export default function HeroSection() {
   
         {/* Right Column - Image */}
         <div className="lg:w-1/2 flex justify-center lg:justify-end mb-8 lg:mb-0">
-          <img
+          <Image
             src="/images/hero.png"
             alt="Luxury home"
             className="rounded-lg max-w-full h-auto"

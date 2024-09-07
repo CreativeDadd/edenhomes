@@ -39,6 +39,7 @@
 import Link from 'next/link';
 import  connectToDatabase  from '../../lib/mongodb';
 import Property from '../../models/Property';
+import Image from 'next/image';
 
 
 export default async function PropertyDetailsPage({ params }) {
@@ -55,7 +56,7 @@ export default async function PropertyDetailsPage({ params }) {
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-4xl font-bold text-black mb-6">{property.title}</h1>
-      <img src={property.imageUrl} alt={property.title} className="w-full h-96 object-cover mb-6 rounded-lg" />
+      <Image src={property.imageUrl} alt={property.title} className="w-full h-96 object-cover mb-6 rounded-lg" />
       <p className="text-gray-600 mb-4">{property.description}</p>
       <p className="text-gray-400 line-through text-lg">₦{property.price}</p>
       <p className="text-orange-500 font-bold text-2xl mb-4">₦{property.discountPrice} ({property.discountPercent}% OFF)</p>

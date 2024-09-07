@@ -46,12 +46,13 @@
 // }
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function PropertyCard({ property }) {
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden max-w-sm transform transition-transform hover:scale-105">
       <div className="relative">
-        <img
+        <Image
           src={property.imageUrl}
           alt={property.title}
           className="w-full h-48 object-cover"
