@@ -1,6 +1,5 @@
 // // app/components/HeroSection.js
 
-import Link from "next/link";
 
 // export default function HeroSection() {
 //     return (
@@ -39,10 +38,12 @@ import Link from "next/link";
 //   }
   
 import Image from "next/image";
+import Link from "next/link";
+
 
 export default function HeroSection() {
     return (
-      <section className=" bg-white flex flex-col-reverse lg:flex-row items-center justify-between px-8 py-16 ">
+      <section className=" bg-white flex flex-col-reverse lg:flex-row items-center justify-between px-8 py-16  mt-12">
         {/* Left Column - Text Content */}
         <div className="lg:w-1/2 flex flex-col space-y-6 text-center lg:text-left">
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-800 leading-snug">
@@ -66,7 +67,7 @@ export default function HeroSection() {
   
         {/* Right Column - Image */}
         <div className="lg:w-1/2 flex justify-center lg:justify-end mb-8 lg:mb-0">
-          <Image
+          <Image width={1100}  height={1100}
             src="/images/hero.png"
             alt="Luxury home"
             className="rounded-lg max-w-full h-auto"

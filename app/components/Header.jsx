@@ -289,12 +289,10 @@ export default function Header() {
             <Link href="/admin/loginmodal" className="bg-[#FF7F50] hover:bg-[#FF6A35] text-white py-2 px-4 rounded-md font-semibold transition-all">
               Login
             </Link>
-            <Link href="/login-form" className="bg-[#FF7F50] hover:bg-[#FF6A35] text-white py-2 px-4 rounded-md font-semibold transition-all">
-              Login Now
-            </Link>
-            <Link href="/signup-form" className="border-[#FF7F50] border-solid border-2 hover:bg-[#FF6A35] text-[#FF7F50] hover:text-white py-2 px-4 rounded-md font-semibold transition-all">
+            
+            {/* <Link href="/signup-form" className="border-[#FF7F50] border-solid border-2 hover:bg-[#FF6A35] text-[#FF7F50] hover:text-white py-2 px-4 rounded-md font-semibold transition-all">
               Signup
-            </Link>
+            </Link> */}
           </div>
 
           {/* Mobile Menu Button */}

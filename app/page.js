@@ -114,9 +114,6 @@ import PropertyCard from './components/PropertyCard';
 import HeroSection from './components/HeroSection';
 import About from './components/About'
 import TestimonialSection from './components/Testimonials';
-// import Navbar from './components/Navbar';
-// import PropertyListPage from './components/PropertyListPage';
-// import BlogPage from './components/BlogPage';
 
 
 
@@ -140,9 +137,7 @@ export default async function HomePage() {
       </div>
       <About />
       <TestimonialSection  />
-      {/* <Navbar /> */}
-      {/* <PropertyListPage  /> */}
-      {/* <BlogPage  /> */}
+      
       
     </main>
   );

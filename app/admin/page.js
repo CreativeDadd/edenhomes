@@ -352,7 +352,7 @@ export default function AdminPage() {
   }
 
   return (
-    <main className="container mx-auto p-6">
+    <main className="container mx-auto p-6 mt-16">
       <h1 className="text-4xl font-bold text-center mb-12">Admin Dashboard</h1>
 
       <div className="flex flex-col md:flex-row gap-4 mb-12 justify-center">

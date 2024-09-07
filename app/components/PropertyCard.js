@@ -45,14 +45,59 @@
 //   );
 // }
 
+// import Link from 'next/link';
+// // import Image from 'next/image';
+
+// export default function PropertyCard({ property }) {
+//   return (
+//     <div className="bg-white shadow-lg rounded-lg overflow-hidden max-w-sm transform transition-transform hover:scale-105">
+//       <div className="relative">
+//         <img
+//           src={property.imageUrl}
+//           alt={property.title}
+//           className="w-full h-48 object-cover"
+//         />
+//         <span className="absolute top-2 left-2 bg-black text-white text-xs px-2 py-1 rounded">
+//           {property.discountPercent}% OFF
+//         </span>
+//       </div>
+//       <div className="p-6">
+//         <h3 className="text-2xl font-semibold text-black mb-2">{property.title}</h3>
+//         <p className="text-gray-600 mb-4">{property.description}</p>
+//         <p className="text-gray-400 line-through">₦{property.price}</p>
+//         <p className="text-orange-500 font-bold text-lg mb-4">₦{property.discountPrice}</p>
+//         <div className="flex justify-between mt-4">
+//           <Link href={`/view-property/${property._id}`}>
+//             <button className="bg-[#FF4500] text-white py-2 px-4 rounded hover:bg-orange-600 transition-colors">
+//               View Details
+//             </button>
+//           </Link>
+//           <Link href="/contact" className="bg-black text-white py-2 px-4 rounded hover:bg-gray-800 transition-colors">
+//             Contact Agent
+//           </Link>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
+
+
+
+
+
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function PropertyCard({ property }) {
+  // Predefined WhatsApp message
+  const whatsappMessage = `Hello, I'm interested in the property titled "${property.title}". Could you please provide more details?`;
+
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden max-w-sm transform transition-transform hover:scale-105">
       <div className="relative">
-        <Image
+        <img
           src={property.imageUrl}
           alt={property.title}
           className="w-full h-48 object-cover"
@@ -66,14 +111,22 @@ export default function PropertyCard({ property }) {
         <p className="text-gray-600 mb-4">{property.description}</p>
         <p className="text-gray-400 line-through">₦{property.price}</p>
         <p className="text-orange-500 font-bold text-lg mb-4">₦{property.discountPrice}</p>
-        <div className="flex justify-between mt-4">
+        <div className="flex justify-between mt-4 space-x-2">
           <Link href={`/view-property/${property._id}`}>
             <button className="bg-[#FF4500] text-white py-2 px-4 rounded hover:bg-orange-600 transition-colors">
-              View Details
+              Details
             </button>
           </Link>
-          <Link href="/contact" className="bg-black text-white py-2 px-4 rounded hover:bg-gray-800 transition-colors">
-            Contact Agent
+          <Link href="/contact">
+            <button className="bg-black text-white py-2 px-4 rounded hover:bg-gray-800 transition-colors">
+               Agent
+            </button>
+          </Link>
+          {/* WhatsApp Button */}
+          <Link href={`https://wa.me/2348102555210?text=${encodeURIComponent(whatsappMessage)}`} target="_blank">
+            <button className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition-colors">
+              WhatsApp
+            </button>
           </Link>
         </div>
       </div>

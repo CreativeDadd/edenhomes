@@ -23,7 +23,7 @@ export default function AboutSection() {
           <div className="lg:w-1/2 mt-8 lg:mt-0">
             <Image
               src="/images/property_1.jpg" // Make sure to add an appropriate image
-              alt="About Us"
+              alt="About Us" width={450} height={450}
               className="w-full h-auto rounded-lg shadow-lg"
             />
           </div>
