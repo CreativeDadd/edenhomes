@@ -366,6 +366,11 @@ export default function AdminPage() {
             + Add New Blog
           </button>
         </Link>
+        <Link href="/admin/blogs">
+          <button className="hover:bg-[#ff4500]  hover:text-white py-3 px-6 rounded-full border-[#ff4500] text-[#ff4500] bg-white border  transition duration-300">
+            Update Blogs
+          </button>
+        </Link>
         <Link href="/admin/contacts">
           <button className="bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-full transition duration-300">
             Check Messages

@@ -108,37 +108,136 @@
 
 
 
-import  connectToDatabase  from './lib/mongodb';
+// import  connectToDatabase  from './lib/mongodb';
+// import Property from './models/Property';
+// import PropertyCard from './components/PropertyCard';
+// import HeroSection from './components/HeroSection';
+// import About from './components/About'
+// import TestimonialSection from './components/Testimonials';
+// import BlogPage from './components/BlogPage';
+
+
+
+// export default async function HomePage() {
+//   await connectToDatabase();
+//   const properties = await Property.find({}).lean();
+
+//   return (
+//     <main className="container mx-auto p-6">
+//       <HeroSection  />
+  
+//       <h1 className="text-5xl font-bold text-center mb-10 text-black">Available Properties</h1>
+//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+//         {properties.length === 0 ? (
+//           <p className="text-center text-gray-500">No properties available.</p>
+//         ) : (
+//           properties.map((property) => (
+//             <PropertyCard key={property._id}  property={property} />
+//           ))
+//         )}
+//       </div>
+//       <About />
+//       <TestimonialSection  />
+//       <BlogPage  />
+      
+      
+//     </main>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import connectToDatabase from './lib/mongodb';
+// import Property from './models/Property';
+// import PropertyCard from './components/PropertyCard';
+// import HeroSection from './components/HeroSection';
+// import About from './components/About';
+// import TestimonialSection from './components/Testimonials';
+// import BlogPage from './components/BlogPage';
+
+// export default async function HomePage() {
+//   await connectToDatabase();
+  
+//   // Fetch properties as plain JavaScript objects
+//   const properties = await Property.find({}).lean();
+
+//   // Serialize the properties, especially the `_id` field
+//   const serializedProperties = properties.map((property) => ({
+//     ...property,
+//     _id: property._id.toString(),  // Convert `_id` to string
+//   }));
+
+//   return (
+//     <main className="container mx-auto p-6">
+//       <HeroSection />
+
+//       <h1 className="text-5xl font-bold text-center mb-10 text-black">Available Properties</h1>
+//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+//         {serializedProperties.length === 0 ? (
+//           <p className="text-center text-gray-500">No properties available.</p>
+//         ) : (
+//           serializedProperties.map((property) => (
+//             <PropertyCard key={property._id} property={property} />
+//           ))
+//         )}
+//       </div>
+
+//       <About />
+//       <TestimonialSection />
+//       <BlogPage />
+//     </main>
+//   );
+// }
+
+
+
+
+import connectToDatabase from './lib/mongodb';
 import Property from './models/Property';
 import PropertyCard from './components/PropertyCard';
 import HeroSection from './components/HeroSection';
-import About from './components/About'
+import About from './components/About';
 import TestimonialSection from './components/Testimonials';
-
-
+import BlogPage from './components/BlogPage';
+import FAQ from './components/FAQ';
 
 export default async function HomePage() {
   await connectToDatabase();
-  const properties = await Property.find({}).lean();
+  let properties = await Property.find({}).lean();
+
+  // Convert MongoDB objects to plain JSON
+  properties = JSON.parse(JSON.stringify(properties));
 
   return (
     <main className="container mx-auto p-6">
-      <HeroSection  />
-  
+      <HeroSection />
+
       <h1 className="text-5xl font-bold text-center mb-10 text-black">Available Properties</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {properties.length === 0 ? (
           <p className="text-center text-gray-500">No properties available.</p>
         ) : (
           properties.map((property) => (
-            <PropertyCard key={property._id}  property={property} />
+            <PropertyCard key={property._id} property={property} />
           ))
         )}
       </div>
       <About />
-      <TestimonialSection  />
-      
-      
+      <TestimonialSection />
+      <BlogPage />
+      <FAQ  />
     </main>
   );
 }
@@ -153,3 +252,54 @@ export default async function HomePage() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+// import connectToDatabase from '@/app/lib/mongodb';
+// import Property from '@/app/models/Property';
+// import PropertyCard from '@/app/components/PropertyCard';
+// import SearchablePropertyList from '@/app/components/SearchablePropertyList';
+
+// export default async function HomePage() {
+//   await connectToDatabase();
+  
+//   // Fetch properties as plain JavaScript objects
+//   const properties = await Property.find({}).lean();
+
+//   // Manually convert the _id and other non-serializable fields
+//   const serializedProperties = properties.map((property) => ({
+//     id: String(property._id), // Convert ObjectId to string and assign to `id`
+//     name: property.name,      // Example field
+//     description: property.description, // Example field
+//     price: property.price,    // Example field
+//     createdAt: property.createdAt ? property.createdAt.toISOString() : null, // Convert Date to ISO string
+//     updatedAt: property.updatedAt ? property.updatedAt.toISOString() : null, // Convert Date to ISO string
+//   }));
+
+//   return (
+//     <section className="container mx-auto p-6 mt-12">
+//       <h1 className="text-5xl font-bold text-center mb-10 text-black">Available Properties</h1>
+      
+//       <div className="container mx-auto p-8 mt-12">
+//         <SearchablePropertyList properties={serializedProperties} />
+//       </div>
+
+//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+//         {serializedProperties.length === 0 ? (
+//           <p className="text-center text-gray-500">No properties available.</p>
+//         ) : (
+//           serializedProperties.map((property) => (
+//             <PropertyCard key={property.id} property={property} />
+//           ))
+//         )}
+//       </div>
+//     </section>
+//   );
+// }

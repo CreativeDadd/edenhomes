@@ -820,7 +820,7 @@ export default function AddProperty() {
   };
 
   return (
-    <div className="container max-w-md mx-auto p-8 bg-white shadow-lg rounded-lg mt-10">
+    <div className="container max-w-md mx-auto p-8 bg-white shadow-lg rounded-lg mt-24">
       <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">Add New Property</h1>
 
       <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6">

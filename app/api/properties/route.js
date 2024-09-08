@@ -5,7 +5,7 @@ import Property from '../../models/Property';
 
 export async function GET() {
   await connectToDatabase();
-  const properties = await Property.find({});
+  const properties = await Property.find({}).lean();
   return NextResponse.json(properties);
 }
 

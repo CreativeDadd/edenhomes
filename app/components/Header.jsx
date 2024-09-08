@@ -286,8 +286,11 @@ export default function Header() {
             <Link href="/testimonials" className="text-gray-800 hover:text-[#FF7F50] font-medium">
               Testimonials
             </Link>
+            <Link href="/blog-nav" className="text-gray-800 hover:text-[#FF7F50] font-medium">
+            Blog/News
+            </Link>
             <Link href="/admin/loginmodal" className="bg-[#FF7F50] hover:bg-[#FF6A35] text-white py-2 px-4 rounded-md font-semibold transition-all">
-              Login
+              Admin Login
             </Link>
             
             {/* <Link href="/signup-form" className="border-[#FF7F50] border-solid border-2 hover:bg-[#FF6A35] text-[#FF7F50] hover:text-white py-2 px-4 rounded-md font-semibold transition-all">
