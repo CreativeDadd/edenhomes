@@ -239,7 +239,7 @@ export default function PropertyCard({ property }) {
       <div className="p-6">
         <h3 className="text-2xl font-semibold text-black mb-2">{property.title}</h3>
         <p className="text-gray-600 mb-2">{property.description}</p>
-        <p className="text-white bg-[#FF4500] italic mb-4 py-1.5 px-4 rounded-full">{property.location}</p>
+        <p className="hover:text-white  border border-[#ff4500] hover:bg-[#FF4500] italic mb-4 py-1.5 px-4 rounded-full">Location: {property.location}</p>
         <p className="text-gray-400 line-through">₦{property.price}</p>
         <p className="text-orange-500 font-bold text-lg mb-4">₦{property.discountPrice}</p>
         <div className="flex justify-between mt-4 space-x-2">
