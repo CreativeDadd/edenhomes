@@ -229,7 +229,7 @@ export default function Testimonials() {
   const testimonials = [
     {
       name: 'John Reelk',
-      image: '/images/testifier.webp',
+      image: '/images/testifier1.png',
       text: 'Orange-Sun Homes provided exceptional service in helping me find my dream home. The team was professional and attentive to my needs.',
     },
     {
