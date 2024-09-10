@@ -211,7 +211,7 @@ import HeroSection from './components/HeroSection';
 import About from './components/About';
 import TestimonialSection from './components/Testimonials';
 import BlogPage from './components/BlogPage';
-// import FAQ from './components/FAQ';
+import FAQ from './components/FAQ';
 
 export default async function HomePage() {
   await connectToDatabase();
@@ -237,7 +237,8 @@ export default async function HomePage() {
       <About />
       <TestimonialSection />
       <BlogPage />
-      {/* <FAQ  /> */}
+      <FAQ  />
+
     </main>
   );
 }

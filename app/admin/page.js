@@ -299,7 +299,7 @@ import Link from 'next/link';
 
 export default function AdminPage() {
   const [properties, setProperties] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
   const [propertyToDelete, setPropertyToDelete] = useState(null);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
 
@@ -312,8 +312,6 @@ export default function AdminPage() {
         setProperties(data);
       } catch (error) {
         console.error('Failed to fetch properties:', error);
-      } finally {
-        setLoading(false);
       }
     };
     fetchProperties();
@@ -347,9 +345,7 @@ export default function AdminPage() {
     setPropertyToDelete(null);
   };
 
-  if (loading) {
-    return <p className="text-2xl grid place-items-center h-[100vh]">Loading...</p>;
-  }
+  
 
   return (
     <main className="container mx-auto p-6 mt-16">

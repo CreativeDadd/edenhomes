@@ -246,6 +246,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -259,13 +260,17 @@ export default function Header() {
   };
 
   return (
-    <nav className="bg-white shadow-lg fixed w-full z-20 top-0">
+    <nav className="bg-white shadow-lg fixed w-full z-20 top-0 py-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center">
-            <Link href="/" className="text-2xl font-bold text-[#FF7F50]">
-              Orange-Sun Homes
+          <div className="flex justify-center items-center gap-4">
+          <Link href="/">
+          <Image src="/images/orangeHomeLogo.jpg"  alt="brandlogo" width={60} height={60} className="border-2 border-[#ff7F50] rounded-[100%]" />
+          </Link>
+            <Link href="/" className="text-xl font-bold text-[#FF7F50] hidden sm:flex ">
+            
+            Orange-Sun Homes
             </Link>
           </div>
 

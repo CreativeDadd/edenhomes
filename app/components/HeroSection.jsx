@@ -115,7 +115,7 @@ export default function HeroSection() {
           <Image
             width={1100}
             height={1100}
-            src="/images/hero.png"
+            src="/images/orangsunNWlogo.jpg"
             alt="Luxury home"
             className="rounded-lg max-w-full h-auto"
           />
