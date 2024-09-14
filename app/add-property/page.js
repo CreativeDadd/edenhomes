@@ -720,9 +720,392 @@
 
 
 
+// 'use client';
+// import { useState, useEffect } from 'react';
+// import { CldImage } from 'next-cloudinary';
+
+// export default function AddProperty() {
+//   const [formData, setFormData] = useState({
+//     title: '',
+//     description: '',
+//     price: '',
+//     discountPrice: '',
+//     discountPercent: '',
+//     imageUrl: '',
+//     location: '',
+//   });
+
+//   const [uploadedImageUrl, setUploadedImageUrl] = useState('');
+//   const [loading, setLoading] = useState(false);
+
+//   useEffect(() => {
+//     // Automatically calculate the discount percentage whenever price or discount price changes
+//     if (formData.price && formData.discountPrice) {
+//       const discountPercent = (
+//         ((formData.price - formData.discountPrice) / formData.price) * 100
+//       ).toFixed(2);
+//       setFormData((prev) => ({ ...prev, discountPercent }));
+//     }
+//   }, [formData.price, formData.discountPrice]);
+
+//   const handleImageUpload = async (e) => {
+//     setLoading(true); // Show loading state while uploading
+//     const file = e.target.files[0];
+//     const imageData = new FormData();
+//     imageData.append('file', file);
+//     imageData.append('upload_preset', 'gzk48mwa'); // Replace with your Cloudinary preset
+
+//     try {
+//       const response = await fetch(`https://api.cloudinary.com/v1_1/dxhwiufpc/image/upload`, {
+//         method: 'POST',
+//         body: imageData,
+//       });
+
+//       const data = await response.json();
+
+//       if (response.ok) {
+//         setUploadedImageUrl(data.secure_url);
+//         setFormData((prev) => ({ ...prev, imageUrl: data.secure_url }));
+//       } else {
+//         alert('Failed to upload image');
+//       }
+//     } catch (error) {
+//       alert('An error occurred during the image upload.');
+//     } finally {
+//       setLoading(false); // Hide loading state after upload
+//     }
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     try {
+//       const response = await fetch('/api/add-property', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(formData),
+//       });
+
+//       if (response.ok) {
+//         alert('Property added successfully!');
+//         // Optionally, reset the form after successful submission
+//         setFormData({
+//           title: '',
+//           description: '',
+//           price: '',
+//           discountPrice: '',
+//           discountPercent: '',
+//           imageUrl: '',
+//           location: '',
+//         });
+//         setUploadedImageUrl('');
+//       } else {
+//         alert('Failed to add property.');
+//       }
+//     } catch (error) {
+//       alert('An error occurred while adding the property.');
+//     }
+//   };
+
+//   // Function to restrict description to 30 words
+//   const handleDescriptionChange = (e) => {
+//     const words = e.target.value.split(/\s+/);
+//     if (words.length <= 30) {
+//       setFormData({ ...formData, description: e.target.value });
+//     } else {
+//       alert('Description cannot exceed 30 words');
+//     }
+//   };
+
+//   return (
+//     <div className="container max-w-md mx-auto p-8 bg-white shadow-lg rounded-lg mt-24">
+//       <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">Add New Property</h1>
+
+//       <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6">
+//         <input
+//           type="text"
+//           placeholder="Title"
+//           value={formData.title}
+//           onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+//           className="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-500 transition duration-200"
+//           required
+//         />
+//         <textarea
+//           placeholder="Description (max 30 words)"
+//           value={formData.description}
+//           onChange={handleDescriptionChange}
+//           className="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-500 transition duration-200"
+//           required
+//         />
+//         <input
+//           type="number"
+//           placeholder="Price"
+//           value={formData.price}
+//           onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+//           className="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-500 transition duration-200"
+//           required
+//         />
+//         <input
+//           type="number"
+//           placeholder="Discount Price"
+//           value={formData.discountPrice}
+//           onChange={(e) => setFormData({ ...formData, discountPrice: e.target.value })}
+//           className="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-500 transition duration-200"
+//           required
+//         />
+//         <input
+//           type="number"
+//           placeholder="Discount Percent"
+//           value={formData.discountPercent}
+//           readOnly
+//           className="border border-gray-300 p-3 rounded-md bg-gray-100"
+//         />
+//         <input
+//           type="file"
+//           onChange={handleImageUpload}
+//           className="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-500 transition duration-200"
+//           required
+//         />
+//         {loading && <p className="text-center text-orange-500">Uploading image...</p>}
+//         {uploadedImageUrl && (
+//           <CldImage width="600" height="600" src={uploadedImageUrl} alt="Uploaded image" />
+//         )}
+//         <input
+//           type="text"
+//           placeholder="Location"
+//           value={formData.location}
+//           onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+//           className="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-500 transition duration-200"
+//           required
+//         />
+//         <button
+//           type="submit"
+//           className="bg-gradient-to-r from-[#FF7F50] to-red-500 text-white py-3 rounded-md text-lg font-semibold hover:shadow-lg transition duration-200"
+//         >
+//           Add Property
+//         </button>
+//       </form>
+//     </div>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+// 'use client';
+
+// import { useState, useEffect } from 'react';
+// import { CldImage } from 'next-cloudinary';
+// import { FaBed, FaBath } from 'react-icons/fa';
+
+// export default function AddProperty() {
+//   const [formData, setFormData] = useState({
+//     title: '',
+//     description: '',
+//     price: '',
+//     discountPrice: '',
+//     discountPercent: '',
+//     imageUrl: '',
+//     location: '',
+//     bedrooms: '',  // New field for bedrooms
+//     bathrooms: '', // New field for bathrooms
+//     images: {
+//       kitchen: '',
+//       front: '',
+//       compound: '',
+//       sittingRoom: '',
+//       specialPlace: '',
+//     },  // New fields for specific images
+//   });
+
+//   const [uploadedImageUrl, setUploadedImageUrl] = useState('');
+//   const [loading, setLoading] = useState(false);
+
+//   useEffect(() => {
+//     if (formData.price && formData.discountPrice) {
+//       const discountPercent = (
+//         ((formData.price - formData.discountPrice) / formData.price) * 100
+//       ).toFixed(2);
+//       setFormData((prev) => ({ ...prev, discountPercent }));
+//     }
+//   }, [formData.price, formData.discountPrice]);
+
+//   const handleImageUpload = async (e, imageType) => {
+//     setLoading(true);
+//     const file = e.target.files[0];
+//     const imageData = new FormData();
+//     imageData.append('file', file);
+//     imageData.append('upload_preset', 'gzk48mwa'); // Replace with your Cloudinary preset
+
+//     try {
+//       const response = await fetch(`https://api.cloudinary.com/v1_1/dxhwiufpc/image/upload`, {
+//         method: 'POST',
+//         body: imageData,
+//       });
+
+//       const data = await response.json();
+
+//       if (response.ok) {
+//         setUploadedImageUrl(data.secure_url);
+//         setFormData((prev) => ({
+//           ...prev,
+//           images: { ...prev.images, [imageType]: data.secure_url },
+//         }));
+//       } else {
+//         alert('Failed to upload image');
+//       }
+//     } catch (error) {
+//       alert('An error occurred during the image upload.');
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     try {
+//       const response = await fetch('/api/add-property', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(formData),
+//       });
+
+//       if (response.ok) {
+//         alert('Property added successfully!');
+//         setFormData({
+//           title: '',
+//           description: '',
+//           price: '',
+//           discountPrice: '',
+//           discountPercent: '',
+//           imageUrl: '',
+//           location: '',
+//           bedrooms: '',
+//           bathrooms: '',
+//           images: { kitchen: '', front: '', compound: '', sittingRoom: '', specialPlace: '' },
+//         });
+//         setUploadedImageUrl('');
+//       } else {
+//         alert('Failed to add property.');
+//       }
+//     } catch (error) {
+//       alert('An error occurred while adding the property.');
+//     }
+//   };
+
+//   return (
+//     <div className="container max-w-md mx-auto p-8 bg-white shadow-lg rounded-lg mt-24">
+//       <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">Add New Property</h1>
+
+//       <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6">
+//         <input
+//           type="text"
+//           placeholder="Title"
+//           value={formData.title}
+//           onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+//           className="border border-gray-300 p-3 rounded-md"
+//           required
+//         />
+//         <textarea
+//           placeholder="Description (max 30 words)"
+//           value={formData.description}
+//           onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+//           className="border border-gray-300 p-3 rounded-md"
+//           required
+//         />
+//         <input
+//           type="number"
+//           placeholder="Price"
+//           value={formData.price}
+//           onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+//           className="border border-gray-300 p-3 rounded-md"
+//           required
+//         />
+//         <input
+//           type="number"
+//           placeholder="Discount Price"
+//           value={formData.discountPrice}
+//           onChange={(e) => setFormData({ ...formData, discountPrice: e.target.value })}
+//           className="border border-gray-300 p-3 rounded-md"
+//           required
+//         />
+
+//         {/* Bedrooms and Bathrooms Fields */}
+//         <div className="flex items-center">
+//           <FaBed className="mr-2" />
+//           <input
+//             type="number"
+//             placeholder="Number of Beds"
+//             value={formData.bedrooms}
+//             onChange={(e) => setFormData({ ...formData, bedrooms: e.target.value })}
+//             className="border border-gray-300 p-3 rounded-md"
+//           />
+//         </div>
+//         <div className="flex items-center">
+//           <FaBath className="mr-2" />
+//           <input
+//             type="number"
+//             placeholder="Number of Bathrooms"
+//             value={formData.bathrooms}
+//             onChange={(e) => setFormData({ ...formData, bathrooms: e.target.value })}
+//             className="border border-gray-300 p-3 rounded-md"
+//           />
+//         </div>
+
+//         {/* Image Uploads for Specific Areas */}
+//         <label>Upload Kitchen Picture:</label>
+//         <input type="file" onChange={(e) => handleImageUpload(e, 'kitchen')} />
+//         <label>Upload Front Picture:</label>
+//         <input type="file" onChange={(e) => handleImageUpload(e, 'front')} />
+//         <label>Upload Compound Picture:</label>
+//         <input type="file" onChange={(e) => handleImageUpload(e, 'compound')} />
+//         <label>Upload Sitting Room Picture:</label>
+//         <input type="file" onChange={(e) => handleImageUpload(e, 'sittingRoom')} />
+//         <label>Upload Special Place Picture:</label>
+//         <input type="file" onChange={(e) => handleImageUpload(e, 'specialPlace')} />
+
+//         <button
+//           type="submit"
+//           className="bg-gradient-to-r from-[#FF7F50] to-red-500 text-white py-3 rounded-md text-lg font-semibold hover:shadow-lg transition duration-200"
+//         >
+//           Add Property
+//         </button>
+//       </form>
+//     </div>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 'use client';
+
 import { useState, useEffect } from 'react';
-import { CldImage } from 'next-cloudinary';
+import { FaBed, FaBath } from 'react-icons/fa';
 
 export default function AddProperty() {
   const [formData, setFormData] = useState({
@@ -732,14 +1115,22 @@ export default function AddProperty() {
     discountPrice: '',
     discountPercent: '',
     imageUrl: '',
-    location: '',
+    location: '',  // Location field
+    bedrooms: '',  // New field for bedrooms
+    bathrooms: '', // New field for bathrooms
+    images: {
+      kitchen: '',
+      front: '',
+      compound: '',
+      sittingRoom: '',
+      specialPlace: '',
+    },  // New fields for specific images
   });
 
   const [uploadedImageUrl, setUploadedImageUrl] = useState('');
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Automatically calculate the discount percentage whenever price or discount price changes
     if (formData.price && formData.discountPrice) {
       const discountPercent = (
         ((formData.price - formData.discountPrice) / formData.price) * 100
@@ -748,8 +1139,8 @@ export default function AddProperty() {
     }
   }, [formData.price, formData.discountPrice]);
 
-  const handleImageUpload = async (e) => {
-    setLoading(true); // Show loading state while uploading
+  const handleImageUpload = async (e, imageType) => {
+    setLoading(true);
     const file = e.target.files[0];
     const imageData = new FormData();
     imageData.append('file', file);
@@ -765,14 +1156,17 @@ export default function AddProperty() {
 
       if (response.ok) {
         setUploadedImageUrl(data.secure_url);
-        setFormData((prev) => ({ ...prev, imageUrl: data.secure_url }));
+        setFormData((prev) => ({
+          ...prev,
+          images: { ...prev.images, [imageType]: data.secure_url },
+        }));
       } else {
         alert('Failed to upload image');
       }
     } catch (error) {
       alert('An error occurred during the image upload.');
     } finally {
-      setLoading(false); // Hide loading state after upload
+      setLoading(false);
     }
   };
 
@@ -790,7 +1184,6 @@ export default function AddProperty() {
 
       if (response.ok) {
         alert('Property added successfully!');
-        // Optionally, reset the form after successful submission
         setFormData({
           title: '',
           description: '',
@@ -799,6 +1192,9 @@ export default function AddProperty() {
           discountPercent: '',
           imageUrl: '',
           location: '',
+          bedrooms: '',
+          bathrooms: '',
+          images: { kitchen: '', front: '', compound: '', sittingRoom: '', specialPlace: '' },
         });
         setUploadedImageUrl('');
       } else {
@@ -806,16 +1202,6 @@ export default function AddProperty() {
       }
     } catch (error) {
       alert('An error occurred while adding the property.');
-    }
-  };
-
-  // Function to restrict description to 30 words
-  const handleDescriptionChange = (e) => {
-    const words = e.target.value.split(/\s+/);
-    if (words.length <= 30) {
-      setFormData({ ...formData, description: e.target.value });
-    } else {
-      alert('Description cannot exceed 30 words');
     }
   };
 
@@ -829,14 +1215,14 @@ export default function AddProperty() {
           placeholder="Title"
           value={formData.title}
           onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-          className="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-500 transition duration-200"
+          className="border border-gray-300 p-3 rounded-md"
           required
         />
         <textarea
           placeholder="Description (max 30 words)"
           value={formData.description}
-          onChange={handleDescriptionChange}
-          className="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-500 transition duration-200"
+          onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+          className="border border-gray-300 p-3 rounded-md"
           required
         />
         <input
@@ -844,7 +1230,7 @@ export default function AddProperty() {
           placeholder="Price"
           value={formData.price}
           onChange={(e) => setFormData({ ...formData, price: e.target.value })}
-          className="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-500 transition duration-200"
+          className="border border-gray-300 p-3 rounded-md"
           required
         />
         <input
@@ -852,34 +1238,51 @@ export default function AddProperty() {
           placeholder="Discount Price"
           value={formData.discountPrice}
           onChange={(e) => setFormData({ ...formData, discountPrice: e.target.value })}
-          className="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-500 transition duration-200"
+          className="border border-gray-300 p-3 rounded-md"
           required
         />
-        <input
-          type="number"
-          placeholder="Discount Percent"
-          value={formData.discountPercent}
-          readOnly
-          className="border border-gray-300 p-3 rounded-md bg-gray-100"
-        />
-        <input
-          type="file"
-          onChange={handleImageUpload}
-          className="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-500 transition duration-200"
-          required
-        />
-        {loading && <p className="text-center text-orange-500">Uploading image...</p>}
-        {uploadedImageUrl && (
-          <CldImage width="600" height="600" src={uploadedImageUrl} alt="Uploaded image" />
-        )}
         <input
           type="text"
           placeholder="Location"
           value={formData.location}
           onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-          className="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-500 transition duration-200"
-          required
+          className="border border-gray-300 p-3 rounded-md"
         />
+
+        {/* Bedrooms and Bathrooms Fields */}
+        <div className="flex items-center">
+          <FaBed className="mr-2" />
+          <input
+            type="number"
+            placeholder="Number of Beds"
+            value={formData.bedrooms}
+            onChange={(e) => setFormData({ ...formData, bedrooms: e.target.value })}
+            className="border border-gray-300 p-3 rounded-md"
+          />
+        </div>
+        <div className="flex items-center">
+          <FaBath className="mr-2" />
+          <input
+            type="number"
+            placeholder="Number of Bathrooms"
+            value={formData.bathrooms}
+            onChange={(e) => setFormData({ ...formData, bathrooms: e.target.value })}
+            className="border border-gray-300 p-3 rounded-md"
+          />
+        </div>
+
+        {/* Image Uploads for Specific Areas */}
+        <label>Upload Kitchen Picture:</label>
+        <input type="file" onChange={(e) => handleImageUpload(e, 'kitchen')} />
+        <label>Upload Front Picture:</label>
+        <input type="file" onChange={(e) => handleImageUpload(e, 'front')} />
+        <label>Upload Compound Picture:</label>
+        <input type="file" onChange={(e) => handleImageUpload(e, 'compound')} />
+        <label>Upload Sitting Room Picture:</label>
+        <input type="file" onChange={(e) => handleImageUpload(e, 'sittingRoom')} />
+        <label>Upload Special Place Picture:</label>
+        <input type="file" onChange={(e) => handleImageUpload(e, 'specialPlace')} />
+
         <button
           type="submit"
           className="bg-gradient-to-r from-[#FF7F50] to-red-500 text-white py-3 rounded-md text-lg font-semibold hover:shadow-lg transition duration-200"
@@ -890,4 +1293,3 @@ export default function AddProperty() {
     </div>
   );
 }
-

@@ -44,9 +44,10 @@ export default function AgentDashboard() {
   return (
     <main className="container mx-auto p-6 mt-16">
       <h1 className="text-4xl font-bold text-center mb-12">Agent Dashboard</h1>
+      {/* <Link href="">Back to AgentDashboard</Link> */}
 
       <div className="flex flex-col md:flex-row gap-4 mb-12 justify-center">
-        <Link href="/agent/add-property">
+        <Link href="/agents/add-property">
           <button className="bg-[#ff4500] hover:bg-[#e63e00] text-white py-3 px-6 rounded-full transition duration-300">
             + ADD NEW PROPERTY
           </button>
@@ -67,7 +68,7 @@ export default function AgentDashboard() {
               <h3 className="text-2xl font-semibold mb-4">{property.title}</h3>
               <p className="text-gray-700 mb-6">{property.description}</p>
               <div className="flex justify-between items-center">
-                <Link href={`/agent/view-property/${property._id}`}>
+                <Link href={`/agents/view-property/${property._id}`}>
                   <button className="bg-blue-800 hover:bg-[#e63e00] text-white py-2 px-4 rounded-full transition duration-300">
                     View Details
                   </button>
