@@ -296,14 +296,25 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation'; // Correct import from next/navigation
 
-export default function AdminPage() {
+export default function Dashboard() {
+  const { data: session } = useSession();
+  const router = useRouter(); // Correct useRouter
   const [properties, setProperties] = useState([]);
-  // const [loading, setLoading] = useState(true);
   const [propertyToDelete, setPropertyToDelete] = useState(null);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
 
+  
+
   useEffect(() => {
+    // user validation logic:
+    if (!session) {
+      router.push('/auth/signin'); // Redirect if not logged in
+    }
+
+
     const fetchProperties = async () => {
       try {
         const response = await fetch('/api/properties');
@@ -315,7 +326,15 @@ export default function AdminPage() {
       }
     };
     fetchProperties();
-  }, []);
+  }, [session, router]);
+
+  if (!session) {
+    return <p className="grid place-items-center h-full mt-24 z-40" >Loading...</p>; // Handle loading state while session is being fetched
+  }
+
+  if (session?.user.role !== 'user') {
+    return <div className="my-64 sm:max-w-md mx-auto text-center border border-solid border-[#ff4500] py-6 px-18"> <p> Access Denied!... </p> </div>; // Show message if the user is not an admin
+  }
 
   const handleDelete = async (id) => {
     try {

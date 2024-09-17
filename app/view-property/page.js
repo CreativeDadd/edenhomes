@@ -37,46 +37,6 @@
 
 
 
-import connectToDatabase from '@/app/lib/mongodb';
-import Property from '@/app/models/Property';
-import PropertyCard from '@/app/components/PropertyCard';
-import SearchablePropertyList from '../components/SearchablePropertyList';
-
-export default async function HomePage() {
-  await connectToDatabase();
-  
-  // Fetch properties as plain JavaScript objects
-  const properties = await Property.find({}).lean();
-
-  // Convert _id to a string for each property
-  const serializedProperties = properties.map((property) => ({
-    ...property,
-    _id: property._id.toString(),
-  }));
-
-  return (
-    <section className="container mx-auto p-6 mt-12">
-      <h1 className="text-5xl font-bold text-center mb-10 text-black">Available Properties</h1>
-      
-      <div className="container mx-auto p-8 mt-12">
-        <SearchablePropertyList properties={serializedProperties} />
-      </div>
-
-      {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {serializedProperties.length === 0 ? (
-          <p className="text-center text-gray-500">No properties available.</p>
-        ) : (
-          serializedProperties.map((property) => (
-            <PropertyCard key={property._id} property={property} />
-          ))
-        )}
-      </div> */}
-    </section>
-  );
-}
-
-
-
 
 
 
@@ -229,3 +189,80 @@ export default async function HomePage() {
 //   );
 // }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import connectToDatabase from '@/app/lib/mongodb';
+import Property from '@/app/models/Property';
+import PropertyCard from '@/app/components/PropertyCard';
+import SearchablePropertyList from '../components/SearchablePropertyList';
+
+export default async function HomePage() {
+  await connectToDatabase();
+  
+  // Fetch properties as plain JavaScript objects
+  const properties = await Property.find({}).lean();
+
+  // Convert _id to a string for each property
+  const serializedProperties = properties.map((property) => ({
+    ...property,
+    _id: property._id.toString(),
+  }));
+
+  return (
+    <section className="container mx-auto p-6 mt-12">
+      <h1 className="text-5xl font-bold text-center mb-10 text-black">Available Properties</h1>
+      
+      <div className="container mx-auto p-8 mt-12">
+        <SearchablePropertyList properties={serializedProperties} />
+      </div>
+
+
+
+
+
+
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {serializedProperties.length === 0 ? (
+          <p className="text-center text-gray-500">No properties available.</p>
+        ) : (
+          serializedProperties.map((property) => (
+            <PropertyCard key={property._id} property={property} />
+          ))
+        )}
+      </div> */}
+    </section>
+  );
+}
