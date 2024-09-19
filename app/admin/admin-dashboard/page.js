@@ -66,7 +66,7 @@ export default function AdminDashboard() {
           </button>
         </Link>
 
-        <Link href="/admin/approve-properties">
+        <Link href="/admin/properties">
           <button className="bg-gradient-to-r from-[#FF7F50] to-[#FF4500] text-white py-4 px-6 rounded-lg text-lg font-semibold hover:shadow-md transition duration-200 w-full">
             Approve Agents' Property Posts
           </button>

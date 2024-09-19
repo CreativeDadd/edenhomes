@@ -80,7 +80,7 @@
 
 
 
-
+// app/api/admin/unapproved-agents/route.js
 import Property from '@/app/models/Property';
 import connectToDatabase from '@/app/lib/mongodb';
 import { isAdmin } from '@/app/lib/auth';

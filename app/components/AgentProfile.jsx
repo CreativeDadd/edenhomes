@@ -33,7 +33,7 @@ export default function AgentProfile() {
     <div className="container mx-auto p-8 bg-white shadow-lg rounded-lg mt-12">
       <h1 className="text-3xl font-bold text-center text-black">Welcome, {session?.user.name}</h1>
       <div className="mt-6">
-        <Link href="/add-property" legacyBehavior>
+        <Link href="/agents/add-property" legacyBehavior>
           <a className="bg-gradient-to-r from-[#FF7F50] to-red-500 text-white py-2 px-4 rounded-md hover:shadow-lg">
             Add New Property
           </a>

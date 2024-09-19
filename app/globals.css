@@ -2,3 +2,92 @@
 @tailwind components;
 @tailwind utilities;
 
+/* global.css or custom CSS module */
+.bg-white {
+    background-color: #ffffff;
+  }
+  
+  .text-black {
+    color: #000000;
+  }
+  
+  .text-gray-600 {
+    color: #718096;
+  }
+  
+  .text-orange-500 {
+    color: #ed8936;
+  }
+  
+  .bg-black {
+    background-color: #000000;
+  }
+  
+  .bg-orange-500 {
+    background-color: #ed8936;
+  }
+  
+  .bg-gray-800 {
+    background-color: #2d3748;
+  }
+  
+  .hover\:bg-gray-800:hover {
+    background-color: #2d3748;
+  }
+  
+  .border {
+    border-width: 1px;
+  }
+  
+  .border-black {
+    border-color: #000000;
+  }
+  
+  .rounded {
+    border-radius: 0.375rem;
+  }
+  
+  .overflow-hidden {
+    overflow: hidden;
+  }
+  
+  .max-w-sm {
+    max-width: 24rem;
+  }
+  
+  .shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .transform {
+    transform: scale(1);
+  }
+  
+  .transition-transform {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .hover\:scale-105:hover {
+    transform: scale(1.05);
+  }
+  
+  .hover\:shadow-xl:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  .mt-2 {
+    margin-top: 0.5rem;
+  }
+  
+  .mt-4 {
+    margin-top: 1rem;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .space-y-2 > * + * {
+    margin-top: 0.5rem;
+  }
+  

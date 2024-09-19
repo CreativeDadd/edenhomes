@@ -34,7 +34,7 @@
 
 
 
-
+// app/api/admin/approve-agent/route.js
 import User from '@/app/models/User';
 import connectToDatabase from '@/app/lib/mongodb';
 import { isAdmin } from '@/app/lib/auth';

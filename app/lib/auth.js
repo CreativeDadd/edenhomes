@@ -55,10 +55,33 @@
 
 
 
+// // app/lib/auth.js
+// import { getServerSession } from 'next-auth';
+// import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 
+// export async function isAdmin(req) {
+//   const session = await getServerSession(authOptions);
+
+//   if (session && session.user && session.user.role === 'admin') {
+//     return session;
+//   }
+
+//   return null;
+// }
+
+
+
+
+
+
+
+
+// app/lib/auth.js
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+// Correct the import path for authOptions. This should match the actual location of your NextAuth configuration.
+import { authOptions } from '@/app/api/auth/[...nextauth]/route'; 
 
+// Helper function to verify if the session belongs to an admin user
 export async function isAdmin(req) {
   const session = await getServerSession(authOptions);
 
