@@ -212,6 +212,7 @@ import About from './components/About';
 import TestimonialSection from './components/Testimonials';
 import BlogPage from './components/BlogPage';
 import FAQ from './components/FAQ';
+import HomeList from './components/HomeList';
 
 export default async function HomePage() {
   await connectToDatabase();
@@ -223,7 +224,7 @@ export default async function HomePage() {
   return (
     <main className="container mx-auto p-6">
       <HeroSection />
-
+      <HomeList />
       <h1 className="text-5xl font-bold text-center mb-10 text-black">Available Properties</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {properties.length === 0 ? (

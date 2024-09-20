@@ -1,361 +1,18 @@
-// import Link from 'next/link'
-// import React from 'react'
-
-// const Header = () => {
-//   return (
-//     <>
-//     <nav className="flex justify-between py-6 px-8 text-[#402015] shadow-md">
-//         <div><Link href="/">OrangeHome</Link></div>
-//         <div className="flex gap-4">
-//             <Link href="/">Home</Link>
-//             <Link href="/about">About</Link>
-//             <Link href="/">Properteis</Link>
-//             <Link href="/">Contact Us</Link>
-//             <Link href="/">FAQ</Link>
-//         </div>
-//         <Link href="/admin/loginmodal">
-//         <button >
-//             Admin Login
-//         </button>
-//         </Link>
-
-//     </nav>
-//     </>
-//   )
-// }
-
-// export default Header
 
 
-
-// import { useState } from 'react';
-// import { MenuIcon, XIcon } from '@heroicons/react/outline';
-
-// export default function Header() {
-//   const [isOpen, setIsOpen] = useState(false);
-
-//   const toggleMenu = () => {
-//     setIsOpen(!isOpen);
-//   };
-
-//   return (
-//     <nav className="bg-white shadow-lg">
-//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//         <div className="flex justify-between h-16">
-//           {/* Logo */}
-//           <div className="flex-shrink-0 flex items-center">
-//             <a href="/" className="text-2xl font-bold text-[#FF7F50]">
-//               Orange-Sun Homes
-//             </a>
-//           </div>
-
-//           {/* Desktop Menu */}
-//           <div className="hidden lg:flex space-x-8">
-//             <a href="/" className="text-gray-800 hover:text-[#FF7F50] font-medium">
-//               Home
-//             </a>
-//             <a href="/properties" className="text-gray-800 hover:text-[#FF7F50] font-medium">
-//               Properties
-//             </a>
-//             <a href="/about" className="text-gray-800 hover:text-[#FF7F50] font-medium">
-//               About Us
-//             </a>
-//             <a href="/contact" className="text-gray-800 hover:text-[#FF7F50] font-medium">
-//               Contact
-//             </a>
-//             <a
-//               href="/login"
-//               className="bg-[#FF7F50] hover:bg-[#FF6A35] text-white py-2 px-4 rounded-md font-semibold transition-all"
-//             >
-//               Login
-//             </a>
-//           </div>
-
-//           {/* Mobile Menu Button */}
-//           <div className="flex lg:hidden">
-//             <button
-//               onClick={toggleMenu}
-//               className="inline-flex items-center justify-center p-2 rounded-md text-gray-800 hover:text-[#FF7F50] hover:bg-gray-200 focus:outline-none focus:bg-gray-200"
-//             >
-//               {isOpen ? (
-//                 <XIcon className="block h-6 w-6" aria-hidden="true" />
-//               ) : (
-//                 <MenuIcon className="block h-6 w-6" aria-hidden="true" />
-//               )}
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* Mobile Menu */}
-//       {isOpen && (
-//         <div className="lg:hidden">
-//           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-//             <a href="/" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium">
-//               Home
-//             </a>
-//             <a href="/properties" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium">
-//               Properties
-//             </a>
-//             <a href="/about" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium">
-//               About Us
-//             </a>
-//             <a href="/contact" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium">
-//               Contact
-//             </a>
-//             <a
-//               href="/login"
-//               className="bg-[#FF7F50] hover:bg-[#FF6A35] text-white block px-3 py-2 rounded-md text-base font-medium"
-//             >
-//               Login
-//             </a>
-//           </div>
-//         </div>
-//       )}
-//     </nav>
-//   );
-// }
-
-
-
-
-
-// app/components/Header.jsx
-// "use client";
-
-// import { useState } from 'react';
-// import Link from 'next/link';
-
-// export default function Header() {
-//   const [isOpen, setIsOpen] = useState(false);
-
-//   const toggleMenu = () => {
-//     setIsOpen(!isOpen);
-//   };
-
-//   return (
-//     <nav className="bg-white shadow-lg">
-//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//         <div className="flex justify-between h-16 items-center">
-//           {/* Logo */}
-//           <div className="flex-shrink-0 flex items-center">
-//             <Link href="/" className="text-2xl font-bold text-[#FF7F50]">
-//             <img src="/images/logo.svg" alt="Corporate-logo"  width={50} height={50} />
-//               Orange-Sun Homes
-//             </Link>
-//           </div>
-
-//           {/* Desktop Menu */}
-//           <div className="hidden lg:flex space-x-8 items-center">
-//             <Link href="/" className="text-gray-800 hover:text-[#FF7F50] font-medium">
-//               Home
-//             </Link>
-//             <Link href="/view-property" className="text-gray-800 hover:text-[#FF7F50] font-medium">
-//               Properties
-//             </Link>
-//             <Link href="/about" className="text-gray-800 hover:text-[#FF7F50] font-medium">
-//               About Us
-//             </Link>
-//             <Link href="/contact" className="text-gray-800 hover:text-[#FF7F50] font-medium">
-//               Contact
-//             </Link>
-//             <Link href="/testimonials" className="text-gray-800 hover:text-[#FF7F50] font-medium">
-//               Testimonials
-//             </Link>
-//             <Link
-//              href="/admin/loginmodal"
-//               className="bg-[#FF7F50] hover:bg-[#FF6A35] text-white py-2 px-4 rounded-md font-semibold transition-all"
-//             >
-//               Login
-//             </Link>
-//             <Link
-//              href="/login-form"
-//               className="bg-[#FF7F50] hover:bg-[#FF6A35] text-white py-2 px-4 rounded-md font-semibold transition-all"
-//             >
-//               Login Now
-//             </Link>
-//             <Link
-//              href="/signup-form"
-//               className=" border-[#FF7F50] border-solid border-2 hover:bg-[#FF6A35] text-[#FF7F50] hover:text-white py-2 px-4 rounded-md font-semibold transition-all"
-//             >
-//               Signup
-//             </Link>
-//           </div>
-
-//           {/* Mobile Menu Button */}
-//           <div className="lg:hidden flex items-center">
-//             <button
-//               onClick={toggleMenu}
-//               className="relative w-10 h-10 flex items-center justify-center focus:outline-none"
-//             >
-//               <span
-//                 className={`block w-6 h-0.5 bg-gray-800 transition-transform duration-300 ${isOpen ? 'translate-y-1.5 rotate-45' : 'translate-y-0'} `}
-//               ></span>
-//               <span
-//                 className={`block w-6 h-0.5 bg-gray-800 transition-opacity duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`}
-//               ></span>
-//               <span
-//                 className={`block w-6 h-0.5 bg-gray-800 transition-transform duration-300 ${isOpen ? '-translate-y-1.5 -rotate-45' : 'translate-y-1.5 rotate-45'}`}
-//               ></span>
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* Mobile Menu */}
-//       {isOpen && (
-//         <div className="lg:hidden">
-//           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-//             <Link href="/" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium">
-//               Home
-//             </Link>
-//             <Link href="/properties" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium">
-//               Properties
-//             </Link>
-//             <Link href="/about" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium">
-//               About Us
-//             </Link>
-//             <Link href="/contact" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium">
-//               Contact
-//             </Link>
-//             <Link href="/testimonials" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium">
-//               Testimonials
-//             </Link>
-//             <Link
-//               href="/admin/loginmodal"
-//               className="bg-[#FF7F50] hover:bg-[#FF6A35] text-white block px-3 py-2 rounded-md text-base font-medium"
-//             >
-//               Login
-//             </Link>
-//           </div>
-//         </div>
-//       )}
-//     </nav>
-//   );
-// }
-
-
-
-
-
-
-
-
-// app/components/Header.jsx
-"use client";
-
-import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
-
-export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const closeMenu = () => {
-    setIsOpen(false);
-  };
-
-  return (
-    <nav className="bg-white shadow-lg fixed w-full z-20 top-0 py-2">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
-          {/* Logo */}
-          <div className="flex justify-center items-center gap-4">
-          <Link href="/">
-          <Image src="/images/orangeHomeLogo.jpg"  alt="brandlogo" width={60} height={60} className="border-2 border-[#ff7F50] rounded-[100%]" />
-          </Link>
-            <Link href="/" className="text-xl font-bold text-[#FF7F50] hidden sm:flex ">
-            
-            Orange-Sun Homes
-            </Link>
-          </div>
-
-          {/* Desktop Menu */}
-          <div className="hidden lg:flex space-x-8 items-center">
-            <Link href="/" className="text-gray-800 hover:text-[#FF7F50] font-medium">
-              Home
-            </Link>
-            <Link href="/view-property" className="text-gray-800 hover:text-[#FF7F50] font-medium">
-              Properties
-            </Link>
-            <Link href="/about" className="text-gray-800 hover:text-[#FF7F50] font-medium">
-              About Us
-            </Link>
-            <Link href="/contact" className="text-gray-800 hover:text-[#FF7F50] font-medium">
-              Contact
-            </Link>
-            <Link href="/testimonials" className="text-gray-800 hover:text-[#FF7F50] font-medium">
-              Testimonials
-            </Link>
-            <Link href="/blog-nav" className="text-gray-800 hover:text-[#FF7F50] font-medium">
-            Blog/News
-            </Link>
-            <Link href="/admin/loginmodal" className="bg-[#FF7F50] hover:bg-[#FF6A35] text-white py-2 px-4 rounded-md font-semibold transition-all">
-              Admin Login
-            </Link>
-            
-            {/* <Link href="/signup-form" className="border-[#FF7F50] border-solid border-2 hover:bg-[#FF6A35] text-[#FF7F50] hover:text-white py-2 px-4 rounded-md font-semibold transition-all">
-              Signup
-            </Link> */}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="lg:hidden flex items-center">
-            <button
-              onClick={toggleMenu}
-              className="relative w-10 h-10 flex flex-col justify-between items-center focus:outline-none"
-            >
-              <span className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 ${isOpen ? 'transform translate-y-2 rotate-45' : ''}`}></span>
-              <span className={`block w-6 h-0.5 bg-gray-800 transition-opacity duration-300 ${isOpen ? 'transform -translate-y-2 -rotate-45' : ''}`}></span>  
-              <span className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 ${isOpen ? 'opacity-0' : '' }`}></span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <div className={`lg:hidden transition-all duration-300 ease-in-out ${isOpen ? 'block' : 'hidden'}`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <Link href="/" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>
-            Home
-          </Link>
-          <Link href="/view-property" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>
-            Properties
-          </Link>
-          <Link href="/about" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>
-            About Us
-          </Link>
-          <Link href="/contact" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>
-            Contact
-          </Link>
-          <Link href="/testimonials" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>
-            Testimonials
-          </Link>
-          <Link href="/admin/loginmodal" className="bg-[#FF7F50] hover:bg-[#FF6A35] text-white block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>
-            Login
-          </Link>
-        </div>
-      </div>
-    </nav>
-  );
-}
-
-
-
-
-
-
+// // app/components/Header.jsx
 // "use client";
 
 // import { useState } from "react";
 // import Link from "next/link";
+// import Image from "next/image";
+// import { signOut } from 'next-auth/react';
+// import { useSession } from 'next-auth/react';
+
 
 // export default function Header() {
 //   const [isOpen, setIsOpen] = useState(false);
+//   const { data: session } = useSession();
 
 //   const toggleMenu = () => {
 //     setIsOpen(!isOpen);
@@ -366,13 +23,17 @@ export default function Header() {
 //   };
 
 //   return (
-//     <nav className="bg-white shadow-lg fixed w-full z-20 top-0">
+//     <nav className="bg-white shadow-lg fixed w-full z-20 top-0 py-2">
 //       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 //         <div className="flex justify-between h-16 items-center">
 //           {/* Logo */}
-//           <div className="flex-shrink-0 flex items-center">
-//             <Link href="/" className="text-2xl font-bold text-[#FF7F50]">
-//               Orange-Sun Homes
+//           <div className="flex justify-center items-center gap-4">
+//           <Link href="/">
+//           <Image src="/images/orangeHomeLogo.jpg"  alt="brandlogo" width={60} height={60} className="border-2 border-[#ff7F50] rounded-[100%]" />
+//           </Link>
+//             <Link href="/" className="text-xl font-bold text-[#FF7F50] hidden sm:flex ">
+            
+//             Orange-Sun Homes
 //             </Link>
 //           </div>
 
@@ -393,12 +54,27 @@ export default function Header() {
 //             <Link href="/testimonials" className="text-gray-800 hover:text-[#FF7F50] font-medium">
 //               Testimonials
 //             </Link>
-//             <Link href="/admin/dashboard" className="bg-[#FF7F50] hover:bg-[#FF6A35] text-white py-2 px-4 rounded-md font-semibold transition-all">
-//               Login Now
+//             <Link href="/blog-nav" className="text-gray-800 hover:text-[#FF7F50] font-medium">
+//             Blog/News
 //             </Link>
-//             <Link href="/signup-form" className="border-[#FF7F50] border-solid border-2 hover:bg-[#FF6A35] text-[#FF7F50] hover:text-white py-2 px-4 rounded-md font-semibold transition-all">
+//             <Link href="/admin/loginmodal" className="bg-[#FF7F50] hover:bg-[#FF6A35] text-white py-2 px-4 rounded-md font-semibold transition-all">
+//               Admin Login
+//             </Link>
+
+//             {session ? (
+//         <>
+//           <span>{session.user.email}</span>
+//           <button onClick={() => signOut()}>Logout</button>
+//         </>
+//       ) : (
+//         <>
+//           <button onClick={() => signIn()}>Login</button>
+//         </>
+//       )}
+            
+//             {/* <Link href="/signup-form" className="border-[#FF7F50] border-solid border-2 hover:bg-[#FF6A35] text-[#FF7F50] hover:text-white py-2 px-4 rounded-md font-semibold transition-all">
 //               Signup
-//             </Link>
+//             </Link> */}
 //           </div>
 
 //           {/* Mobile Menu Button */}
@@ -433,11 +109,237 @@ export default function Header() {
 //           <Link href="/testimonials" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>
 //             Testimonials
 //           </Link>
-//           <Link href="/admin/dashboard" className="bg-[#FF7F50] hover:bg-[#FF6A35] text-white block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>
-//             Login Now
+//           <Link href="/blog-nav" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>
+//           Blog/News
+//           </Link>
+//           <Link href="/admin/loginmodal" className="bg-[#FF7F50] hover:bg-[#FF6A35] text-white block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>
+//             Login
 //           </Link>
 //         </div>
 //       </div>
 //     </nav>
 //   );
 // }
+
+
+
+
+// // app/components/Header.jsx
+
+// 'use client'; // Ensure that this is a client component
+
+// import { useState } from "react";
+// import Link from "next/link";
+// import Image from "next/image";
+// import { signOut, signIn, useSession } from 'next-auth/react';
+
+// export default function Header() {
+//   const [isOpen, setIsOpen] = useState(false);
+//   const { data: session } = useSession(); // Session data from next-auth
+
+//   const toggleMenu = () => {
+//     setIsOpen(!isOpen);
+//   };
+
+//   const closeMenu = () => {
+//     setIsOpen(false);
+//   };
+
+//   return (
+//     <nav className="bg-white shadow-lg fixed w-full z-20 top-0 py-2">
+//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+//         <div className="flex justify-between h-16 items-center">
+//           {/* Logo */}
+//           <div className="flex justify-center items-center gap-4">
+//             <Link href="/">
+//               <Image src="/images/orangeHomeLogo.jpg" alt="brandlogo" width={60} height={60} className="border-2 border-[#ff7F50] rounded-[100%]" />
+//             </Link>
+//             <Link href="/" className="text-xl font-bold text-[#FF7F50] hidden sm:flex">
+//               Orange-Sun Homes
+//             </Link>
+//           </div>
+
+//           {/* Desktop Menu */}
+//           <div className="hidden lg:flex space-x-8 items-center">
+//             <Link href="/" className="text-gray-800 hover:text-[#FF7F50] font-medium">Home</Link>
+//             <Link href="/view-property" className="text-gray-800 hover:text-[#FF7F50] font-medium">Properties</Link>
+//             <Link href="/about" className="text-gray-800 hover:text-[#FF7F50] font-medium">About Us</Link>
+//             <Link href="/contact" className="text-gray-800 hover:text-[#FF7F50] font-medium">Contact</Link>
+//             <Link href="/testimonials" className="text-gray-800 hover:text-[#FF7F50] font-medium">Testimonials</Link>
+//             <Link href="/blog-nav" className="text-gray-800 hover:text-[#FF7F50] font-medium">Blog/News</Link>
+//             <Link href="/admin/loginmodal" className="bg-[#FF7F50] hover:bg-[#FF6A35] text-white py-2 px-4 rounded-md font-semibold transition-all">Admin Login</Link>
+
+//             {session ? (
+//               <>
+//                 <span>{session.user.email}</span>
+//                 <button onClick={() => signOut()} className="text-gray-800 hover:text-[#FF7F50] font-medium">Logout</button>
+//               </>
+//             ) : (
+//               <button onClick={() => signIn()} className="text-gray-800 hover:text-[#FF7F50] font-medium">Login</button>
+//             )}
+//           </div>
+
+//           {/* Mobile Menu Button */}
+//           <div className="lg:hidden flex items-center">
+//             <button onClick={toggleMenu} className="relative w-10 h-10 flex flex-col justify-between items-center focus:outline-none">
+//               <span className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 ${isOpen ? 'transform translate-y-2 rotate-45' : ''}`}></span>
+//               <span className={`block w-6 h-0.5 bg-gray-800 transition-opacity duration-300 ${isOpen ? 'opacity-0' : ''}`}></span>
+//               <span className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 ${isOpen ? '-translate-y-2 -rotate-45' : ''}`}></span>
+//             </button>
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Mobile Menu */}
+//       <div className={`lg:hidden transition-all duration-300 ease-in-out ${isOpen ? 'block' : 'hidden'}`}>
+//         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+//           <Link href="/" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>Home</Link>
+//           <Link href="/view-property" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>Properties</Link>
+//           <Link href="/about" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>About</Link>
+//           <Link href="/contact" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>Contact</Link>
+//           <Link href="/testimonials" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>Testimonials</Link>
+//           <Link href="/blog-nav" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>Blog/News</Link>
+//           <Link href="/admin/loginmodal" className="bg-[#FF7F50] hover:bg-[#FF6A35] text-white block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>Login</Link>
+//         </div>
+//       </div>
+//     </nav>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+'use client'; // Ensure that this is a client component
+
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { signOut, signIn, useSession } from 'next-auth/react';
+
+export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+  const { data: session } = useSession(); // Session data from next-auth
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
+  return (
+    <nav className="bg-white shadow-lg fixed w-full z-20 top-0 py-2">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16 items-center">
+          {/* Logo */}
+          <div className="flex justify-center items-center gap-4">
+            <Link href="/">
+              <Image src="/images/logo.svg" alt="brandlogo" width={60} height={60} className="border-2 border-[#ff7F50] rounded-[100%]" />
+            </Link>
+            <Link href="/" className="text-xl font-bold text-[#FF7F50] hidden sm:flex">
+              Orange-Sun Homes
+            </Link>
+          </div>
+
+          {/* Desktop Menu */}
+          <div className="hidden lg:flex space-x-8 items-center">
+            <Link href="/" className="text-gray-800 hover:text-[#FF7F50] font-medium">Home</Link>
+            <Link href="/view-property" className="text-gray-800 hover:text-[#FF7F50] font-medium">Properties</Link>
+            <Link href="/about" className="text-gray-800 hover:text-[#FF7F50] font-medium">About Us</Link>
+            <Link href="/contact" className="text-gray-800 hover:text-[#FF7F50] font-medium">Contact</Link>
+            <Link href="/testimonials" className="text-gray-800 hover:text-[#FF7F50] font-medium">Testimonials</Link>
+            <Link href="/blog-nav" className="text-gray-800 hover:text-[#FF7F50] font-medium">Blog/News</Link>
+            {/* <Link href="/admin/loginmodal" className="bg-[#FF7F50] hover:bg-[#FF6A35] text-white py-2 px-4 rounded-md font-semibold transition-all">Admin Login</Link> */}
+
+            {/* {session ? (
+              <>
+                <span>{session.user.email}</span>
+                <button onClick={() => signOut()} className="text-gray-800 hover:text-[#FF7F50] font-medium">Logout</button>
+              </>
+            ) : (
+              <>
+                
+                <button onClick={() => signup()}  className="text-gray-800 hover:text-[#FF7F50] font-medium">SignUp</button>
+                <button onClick={() => signIn()} className="text-gray-800 hover:text-[#FF7F50] font-medium">SignIn</button>
+              </>
+            )} */}
+
+{session ? (
+  <>
+    <span>{session.user.email}</span>
+    <Link rel="stylesheet" href="/admin/admin-dashboard" className="underline text-[#FF7F69]" >Admin DashBoard</Link>
+    <button onClick={() => signOut()} className="text-gray-800 hover:text-[#FF7F50] font-medium">Logout</button>
+  </>
+) : (
+  <>
+    {/* SignUp Button - Use Link to navigate */}
+    <Link href="/auth/signup" className=" font-medium bg-[#FF7F50] hover:bg-[#FF6A35] text-white py-2 px-4 rounded-md  transition-all">SignUp</Link>
+    
+    {/* SignIn Button - Customize signIn behavior to avoid default callbackUrl */}
+    <Link  
+      href="/auth/signin"
+      className="text-gray-800 font-medium order border-solid border-[#ff7f50] py-1 px-6 rounded-full hover:text-[#FF7F50]">
+      SignIn
+    </Link>
+  </>
+)}
+
+
+
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="lg:hidden flex items-center">
+            <button onClick={toggleMenu} className="relative w-10 h-10 flex flex-col justify-between items-center focus:outline-none">
+              <span className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 ${isOpen ? 'transform translate-y-2 rotate-45' : ''}`}></span>
+              <span className={`block w-6 h-0.5 bg-gray-800 transition-opacity duration-300 ${isOpen ? 'opacity-0' : ''}`}></span>
+              <span className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 ${isOpen ? '-translate-y-2 -rotate-45' : ''}`}></span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <div className={`lg:hidden transition-all duration-300 ease-in-out ${isOpen ? 'block' : 'hidden'}`}>
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <Link href="/" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>Home</Link>
+          <Link href="/view-property" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>Properties</Link>
+          <Link href="/about" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>About</Link>
+          <Link href="/contact" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>Contact</Link>
+          <Link href="/testimonials" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>Testimonials</Link>
+          <Link href="/blog-nav" className="text-gray-800 hover:text-[#FF7F50] block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>Blog/News</Link>
+          {/* <Link href="/admin/loginmodal" className="bg-[#FF7F50] hover:bg-[#FF6A35] text-white block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>Login</Link> */}
+          {session ? (
+  <>
+    <span>{session.user.email}</span>
+    <Link rel="stylesheet" href="/admin/admin-dashboard" className="underline text-[#FF7F69]" >Admin DashBoard</Link> 
+    <button onClick={() => signOut()} className="text-gray-800 hover:text-[#FF7F50] font-medium">Logout</button>
+  </>
+) : (
+  <div className="flex flex-col gap-1 max-w-24">
+    {/* SignUp Button - Use Link to navigate */}
+    <Link href="/auth/signup" className="text-gray-800 border border-solid border-[#ff7f50] py-0.5 px-6 rounded-full hover:text-[#FF7F50] font-medium ">SignUp</Link>
+    
+    {/* SignIn Button - Customize signIn behavior to avoid default callbackUrl */}
+    <Link  
+      href="/auth/signin"
+      className="text-gray-800 hover:text-[#FF7F50] font-medium border border-solid border-[#ff7f50] py-0.5 px-6 rounded-full mt-5">
+      SignIn
+    </Link>
+  </div>
+)}
+        </div>
+      </div>
+    </nav>
+  );
+}

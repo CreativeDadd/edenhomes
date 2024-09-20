@@ -1,73 +1,320 @@
-// import { connectToDatabase } from '../../lib/mongodb';
-// import Property from '../../models/Property';
+// import connectToDatabase from '@/app/lib/mongodb';
+// import Property from '@/app/models/Property';
+// import Image from 'next/image'; // Ensure you have the `next/image` component for optimized images
 
-// export default function ViewProperty({ property }) {
+// async function getProperty(id) {
+//   await connectToDatabase();
+//   const property = await Property.findById(id).exec();
+//   if (!property) {
+//     return null; // Return null if property is not found
+//   }
+//   return property;
+// }
+
+// export default async function PropertyPage({ params }) {
+//   const { id } = params;
+//   const property = await getProperty(id);
+
+//   if (!property) {
+//     return <div>Property not found</div>; // Handle the case where the property is not found
+//   }
+
+//   return (
+//     <div className="container mx-auto p-6 mt-16">
+//       <div className="flex flex-col md:flex-row md:gap-6">
+//         <div className="flex-1">
+//           <div className="relative w-full h-60 md:h-80">
+//             <Image
+//               src={property.imageUrl}
+//               alt={property.title}
+//               layout="fill"
+//               objectFit="cover"
+//               className="rounded-lg"
+//             />
+//           </div>
+//           <div className="mt-4">
+//             <h2 className="text-2xl font-bold mb-2">{property.title}</h2>
+//             <p className="text-lg font-semibold text-gray-700 mb-4">${property.price}</p>
+//             <p className="text-gray-800 mb-6">{property.description}</p>
+//             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+//               {property.images && property.images.map((imgUrl, index) => (
+//                 <div key={index} className="relative w-full h-40">
+//                   <Image
+//                     src={imgUrl}
+//                     alt={`Property Image ${index + 1}`}
+//                     layout="fill"
+//                     objectFit="cover"
+//                     className="rounded-lg cursor-pointer hover:opacity-80"
+//                   />
+//                 </div>
+//               ))}
+//             </div>
+//           </div>
+//         </div>
+
+//         <div className="md:w-1/3 mt-6 md:mt-0">
+//           <div className="p-6 bg-white shadow-lg rounded-lg">
+//             <h3 className="text-xl font-semibold mb-4">Property Details</h3>
+//             <ul className="space-y-2">
+//               <li><strong>Address:</strong> {property.address}</li>
+//               <li><strong>Price:</strong> ${property.price}</li>
+//               <li><strong>Bedrooms:</strong> {property.bedrooms}</li>
+//               <li><strong>Bathrooms:</strong> {property.bathrooms}</li>
+//               <li><strong>Square Feet:</strong> {property.squareFeet} sq ft</li>
+//               <li><strong>Year Built:</strong> {property.yearBuilt}</li>
+//             </ul>
+//             <button
+//               className="mt-4 bg-[#FF7F50] hover:bg-[#FF6A35] text-white font-semibold py-2 px-4 rounded-md transition-all"
+//             >
+//               Contact Agent
+//             </button>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import  connectToDatabase  from '../../lib/mongodb';
+// import Property from '../../models/Property';
+// import Image from 'next/image';
+
+// // Fetch property data based on property ID
+// export async function fetchProperty(id) {
+
+//   await connectToDatabase();
+//   const property = await Property.findById(id).exec();
+//   if (!property) {
+//     throw new Error('Property not found');
+//   }
+//   return property;
+// }
+
+// // Generate static paths for the property pages
+// export async function generateStaticParams() {
+//   await connectToDatabase();
+//   const properties = await Property.find({}).select('_id').exec();
+//   return properties.map((property) => ({
+//     id: property._id.toString()
+//   }));
+// }
+
+// // The page component
+// export default async function ViewProperty({ params }) {
+//   const { id } = params;
+//   const property = await fetchProperty(id);
+
+//   // Ensure property.images is an array
+//   const images = Array.isArray(property.images) ? property.images : [property.images];
+
 //   return (
 //     <main className="container mx-auto p-6">
-//       <img src={property.imageUrl} alt={property.title} className="w-full h-64 object-cover rounded-lg mb-4" />
+//       <div className="relative w-full h-64 mb-4">
+//         <Image
+//           src={property.imageUrl}
+//           alt={property.title}
+//           layout="fill"
+//           objectFit="cover"
+//           className="rounded-lg"
+//         />
+//       </div>
 //       <h1 className="text-4xl font-bold">{property.title}</h1>
 //       <p className="text-gray-500">{property.description}</p>
 //       <p className="text-gray-400 line-through">₦{property.price}</p>
 //       <p className="text-orange-500 font-bold">₦{property.discountPrice} ({property.discountPercent}% OFF)</p>
 //       <p className="text-gray-700 mt-4">Location: {property.location}</p>
+      
+//       {/* Display additional images */}
+//       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-6">
+//         {images.map((imgUrl, index) => (
+//           <div key={index} className="relative w-full h-40">
+//             <Image
+//               src={imgUrl}
+//               alt={`Image ${index + 1}`}
+//               layout="fill"
+//               objectFit="cover"
+//               className="rounded-lg"
+//             />
+//           </div>
+//         ))}
+//       </div>
+
 //       <div className="mt-6 flex justify-between">
-//         <button className="bg-orange-500 text-white py-2 px-4 rounded">Contact Agent</button>
+//         <button className="bg-[#ff7f50] text-white py-2 px-4 rounded">Contact Agent</button>
 //         <button className="bg-blue-500 text-white py-2 px-4 rounded">Call Now</button>
 //       </div>
 //     </main>
 //   );
 // }
 
-// export async function getServerSideProps(context) {
-//   const { id } = context.params;
-//   await connectToDatabase();
-//   const property = await Property.findById(id);
-//   return {
-//     props: {
-//       property: JSON.parse(JSON.stringify(property)),
-//     },
-//   };
-// }
 
 
 
 
 
 
-// app/view-property/[id]/page.js
 
-import Link from 'next/link';
-import  connectToDatabase  from '../../lib/mongodb';
-import Property from '../../models/Property';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// app/properties/[id]/page.js
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 
+const PropertyDetail = () => {
+  const { id } = useParams();
+  const [property, setProperty] = useState(null);
+  const [mainImage, setMainImage] = useState('');
 
-export default async function PropertyDetailsPage({ params }) {
-  const { id } = params;  // Destructure the id from the params
+  useEffect(() => {
+    // Fetch property details from the API
+    const fetchProperty = async () => {
+      try {
+        const response = await fetch(`/api/properties/view-details/${id}`);
+        const data = await response.json();
+        setProperty(data.property);
+        setMainImage(data.property.imageUrl); // Set initial main image
+      } catch (error) {
+        console.error('Failed to load property details:', error);
+      }
+    };
 
-  // Fetch the property data from the database
-  await connectToDatabase();
-  const property = await Property.findById(id).lean();
+    fetchProperty();
+  }, [id]);
 
-  if (!property) {
-    return <div>Property not found</div>;
-  }
+  
+
+  if (!property) return <div>Loading...</div>;
 
   return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-4xl font-bold text-black mb-6">{property.title}</h1>
-      <Image src={property.imageUrl} alt={property.title} className="w-full h-96 object-cover mb-6 rounded-lg" width={1800} height={1800}  />
-      <p className="text-gray-600 mb-4">{property.description}</p>
-      <p className="text-gray-400 line-through text-lg">₦{property.price}</p>
-      <p className="text-orange-500 font-bold text-2xl mb-4">₦{property.discountPrice} ({property.discountPercent}% OFF)</p>
-      <p className="text-gray-700 text-lg mb-4">Location: {property.location}</p>
-      <div className="flex gap-5 mt-7">
-      <Link href="/contact" className="bg-blue-500 text-white py-2 px-4 rounded">Contact Agent</Link>
-      <button className="bg-[orange] text-white py-2 px-4 rounded">Book A Tour</button>
-      <button className="bg-[#ff4500] text-white py-2 px-4 rounded">Add To Cart</button>
+    <div className="container mx-auto p-8 mt-16">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Image Gallery Section */}
+        <div>
+          <div className="border rounded-lg overflow-hidden mb-4">
+            <Image
+              src={mainImage}
+              alt={property.title}
+              width={800}
+              height={600}
+              className="object-cover w-full"
+            />
+          </div>
+          <div className="grid grid-cols-5 gap-2">
+            {/* Thumbnail images */}
+            {['imageUrl', 'kitchenImageUrl', 'frontImageUrl', 'compoundImageUrl', 'sittingRoomImageUrl', 'specialPlaceImageUrl']
+              .filter((key) => property[key]) // Only include images that are present
+              .map((key) => (
+                <div
+                  key={key}
+                  className="cursor-pointer border rounded-md"
+                  onClick={() => setMainImage(property[key])}
+                >
+                  <Image
+                    src={property[key]}
+                    alt={`${key} thumbnail`}
+                    width={150}
+                    height={100}
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+          </div>
+        </div>
+
+        {/* Property Details Section */}
+        <div className="space-y-6">
+          <h1 className="text-3xl font-bold">{property.title}</h1>
+          <p className="text-gray-700">{property.description}</p>
+          <div className="flex space-x-4">
+            <span className="font-bold">Beds:</span>
+            <span>{property.beds}</span>
+            <span className="font-bold">Baths:</span>
+            <span>{property.baths}</span>
+          </div>
+          {/* Contact and Action Buttons */}
+          <div className="space-y-4">
+            <Link href="/contact" className="bg-orange-500 block text-center text-white py-2 px-4 rounded-md w-full">
+              Contact Us
+            </Link>
+            <Link href={`mailto:info@orangesunhomes.com?subject=Inquiry about ${property.title}`} className="bg-black block text-white text-center py-2 px-4 rounded-md w-full">
+                Drop a Mail
+            </Link>
+            <Link href={`https://wa.me/2348102555210?text=${encodeURIComponent(`Hello, I'm interested in the property titled "${property.title}". Could you please provide more details?`)}`} target="_blank">
+             <button className="bg-green-500 mt-3 block text-center text-white py-2 px-4 rounded hover:bg-green-600 transition-colors">
+               WhatsApp
+           </button>
+          </Link>
+            {/* <button className="bg-white border border-black text-black py-2 px-4 rounded-md w-full">
+              Add to Cart
+            </button> */}
+          </div>
+        </div>
       </div>
     </div>
   );
-}
+};
 
-// No need for getServerSideProps. The `params` are automatically provided in server components.
+export default PropertyDetail;
