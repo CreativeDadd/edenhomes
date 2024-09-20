@@ -392,6 +392,120 @@
 
 
 
+// // app/components/PropertyCard.js
+// import Link from 'next/link';
+// import Image from 'next/image';
+// import { FaBed, FaBath } from 'react-icons/fa';
+
+// export default function PropertyCard({ property }) {
+//   const { 
+//     title, 
+//     description, 
+//     price, 
+//     discountPrice, 
+//     discountPercent, 
+//     imageUrl, 
+//     location, 
+//     bedrooms, 
+//     bathrooms 
+//   } = property; // Destructure property to only include required values
+
+//   return (
+//     <div className="bg-white shadow-lg rounded-lg overflow-hidden max-w-sm transform transition-transform hover:scale-105">
+//       <div className="relative">
+//         <Image
+//           width={100}
+//           height={100}
+//           src={imageUrl}  // Correct image field
+//           alt={title}
+//           className="w-full h-48 object-cover"
+//         />
+//         <span className="absolute top-2 left-2 bg-black text-white text-xs px-2 py-1 rounded">
+//           {discountPercent}% OFF
+//         </span>
+//       </div>
+//       <div className="p-6">
+//         <h3 className="text-2xl font-semibold text-black mb-2">{title}</h3>
+//         <p className="text-gray-600 mb-2">{description}</p>
+//         <p className="border border-solid border-[#FF7F50] italic mb-4 py-1.5 px-4 rounded-full">{location}</p>
+//         <p className="text-gray-400 line-through">₦{price}</p>
+//         <p className="text-orange-500 font-bold text-lg mb-4">₦{discountPrice}</p>
+
+//         <div className="flex items-center space-x-4 mb-4">
+//           <div className="flex items-center space-x-1">
+//             <FaBed className="text-orange-500" />
+//             <span>{bedrooms} Beds</span>
+//           </div>
+//           <div className="flex items-center space-x-1">
+//             <FaBath className="text-orange-500" />
+//             <span>{bathrooms} Baths</span>
+//           </div>
+//         </div>
+
+//         <div className="flex items-center justify-between">
+//           <Link href={`/view-property/${property._id}`} legacyBehavior>
+//             <a className="bg-[#FF7F50] text-white py-2 px-4 rounded-lg font-semibold hover:bg-orange-600 transition">
+//               View Details
+//             </a>
+//           </Link>
+//           <Link href={`/contact`} legacyBehavior>
+//             <a className="text-[#FF7F50] font-semibold hover:bg-orange-600 transition">
+//               Contact Us
+//             </a>
+//           </Link>
+//           <Link href={`mailto:info@example.com?subject=Enquiry`} legacyBehavior>
+//             <a className="text-[#FF7F50] font-semibold hover:bg-orange-600 transition">
+//               Drop a mail
+//             </a>
+//           </Link>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // app/components/PropertyCard.js
 import Link from 'next/link';
 import Image from 'next/image';
@@ -408,61 +522,80 @@ export default function PropertyCard({ property }) {
     location, 
     bedrooms, 
     bathrooms 
-  } = property; // Destructure property to only include required values
+  } = property; // Destructure property
 
   return (
-    <div className="bg-white shadow-lg rounded-lg overflow-hidden max-w-sm transform transition-transform hover:scale-105">
+    <div className="bg-white shadow-lg rounded-lg overflow-hidden max-w-sm transform transition-transform hover:scale-105 hover:shadow-xl">
       <div className="relative">
-        <Image
-          width={100}
-          height={100}
-          src={imageUrl}  // Correct image field
-          alt={title}
-          className="w-full h-48 object-cover"
-        />
-        <span className="absolute top-2 left-2 bg-black text-white text-xs px-2 py-1 rounded">
+        {imageUrl && (
+          <Image
+            width={100}
+            height={100}
+            src={imageUrl} // Correct image field
+            alt={title}
+            className="w-full h-48 object-cover"
+          />
+        )}
+        <span className="absolute top-2 left-2 bg-orange-500 text-white text-xs px-2 py-1 rounded">
           {discountPercent}% OFF
         </span>
       </div>
-      <div className="p-6">
-        <h3 className="text-2xl font-semibold text-black mb-2">{title}</h3>
-        <p className="text-gray-600 mb-2">{description}</p>
-        <p className="border border-solid border-[#FF7F50] italic mb-4 py-1.5 px-4 rounded-full">{location}</p>
-        <p className="text-gray-400 line-through">₦{price}</p>
-        <p className="text-orange-500 font-bold text-lg mb-4">₦{discountPrice}</p>
-
-        <div className="flex items-center space-x-4 mb-4">
-          <div className="flex items-center space-x-1">
-            <FaBed className="text-orange-500" />
+      <div className="p-4">
+        <h3 className="font-semibold text-lg text-black">{title}</h3>
+        <p className="text-sm text-gray-600 mt-1">{description}</p>
+        <p className=" text-gray-700 border-[#FF4500] border-solid border text-center py-2 px-3 rounded hover:bg-orange-600 text-sm mt-1" >Location: {location}</p>
+        <p className="text-xl font-bold text-orange-500 mt-2">
+          ${discountPrice} 
+          <span className="line-through text-gray-500 ml-2">${price}</span>
+        </p>
+        <div className="flex justify-between items-center mt-4 text-gray-600">
+          <div className="flex items-center">
+            <FaBed className="mr-1 text-black" />
             <span>{bedrooms} Beds</span>
           </div>
-          <div className="flex items-center space-x-1">
-            <FaBath className="text-orange-500" />
+          <div className="flex items-center">
+            <FaBath className="mr-1 text-black" />
             <span>{bathrooms} Baths</span>
           </div>
         </div>
-
-        <div className="flex items-center justify-between">
-          <Link href={`/view-property/${property._id}`} legacyBehavior>
-            <a className="bg-[#FF7F50] text-white py-2 px-4 rounded-lg font-semibold hover:bg-orange-600 transition">
+        <div className="mt-4 flex flex-col space-y-2">
+          <Link href={`/property/${property.id}`} className="bg-black text-white text-center py-2 px-3 rounded hover:bg-gray-800">
               View Details
-            </a>
           </Link>
-          <Link href={`/contact`} legacyBehavior>
-            <a className="text-[#FF7F50] font-semibold hover:bg-orange-600 transition">
-              Contact Us
-            </a>
+          <Link href="mailto:info@orangesunhomes.com?subject=Enquiry about property"  className="bg-orange-500 text-white text-center py-2 px-3 rounded hover:bg-orange-600">
+              Drop a Mail
           </Link>
-          <Link href={`mailto:info@example.com?subject=Enquiry`} legacyBehavior>
-            <a className="text-[#FF7F50] font-semibold hover:bg-orange-600 transition">
-              Drop a mail
-            </a>
+          <Link href="contact"  className="bg-white text-black text-center border border-black py-2 px-3 rounded hover:bg-gray-100">
+              Enquire/Contact Us
           </Link>
         </div>
       </div>
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
