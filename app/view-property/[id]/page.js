@@ -92,75 +92,229 @@
 
 
 
-import  connectToDatabase  from '../../lib/mongodb';
-import Property from '../../models/Property';
+// import  connectToDatabase  from '../../lib/mongodb';
+// import Property from '../../models/Property';
+// import Image from 'next/image';
+
+// // Fetch property data based on property ID
+// export async function fetchProperty(id) {
+
+//   await connectToDatabase();
+//   const property = await Property.findById(id).exec();
+//   if (!property) {
+//     throw new Error('Property not found');
+//   }
+//   return property;
+// }
+
+// // Generate static paths for the property pages
+// export async function generateStaticParams() {
+//   await connectToDatabase();
+//   const properties = await Property.find({}).select('_id').exec();
+//   return properties.map((property) => ({
+//     id: property._id.toString()
+//   }));
+// }
+
+// // The page component
+// export default async function ViewProperty({ params }) {
+//   const { id } = params;
+//   const property = await fetchProperty(id);
+
+//   // Ensure property.images is an array
+//   const images = Array.isArray(property.images) ? property.images : [property.images];
+
+//   return (
+//     <main className="container mx-auto p-6">
+//       <div className="relative w-full h-64 mb-4">
+//         <Image
+//           src={property.imageUrl}
+//           alt={property.title}
+//           layout="fill"
+//           objectFit="cover"
+//           className="rounded-lg"
+//         />
+//       </div>
+//       <h1 className="text-4xl font-bold">{property.title}</h1>
+//       <p className="text-gray-500">{property.description}</p>
+//       <p className="text-gray-400 line-through">₦{property.price}</p>
+//       <p className="text-orange-500 font-bold">₦{property.discountPrice} ({property.discountPercent}% OFF)</p>
+//       <p className="text-gray-700 mt-4">Location: {property.location}</p>
+      
+//       {/* Display additional images */}
+//       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-6">
+//         {images.map((imgUrl, index) => (
+//           <div key={index} className="relative w-full h-40">
+//             <Image
+//               src={imgUrl}
+//               alt={`Image ${index + 1}`}
+//               layout="fill"
+//               objectFit="cover"
+//               className="rounded-lg"
+//             />
+//           </div>
+//         ))}
+//       </div>
+
+//       <div className="mt-6 flex justify-between">
+//         <button className="bg-[#ff7f50] text-white py-2 px-4 rounded">Contact Agent</button>
+//         <button className="bg-blue-500 text-white py-2 px-4 rounded">Call Now</button>
+//       </div>
+//     </main>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// app/properties/[id]/page.js
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 
-// Fetch property data based on property ID
-export async function fetchProperty(id) {
+const PropertyDetail = () => {
+  const { id } = useParams();
+  const [property, setProperty] = useState(null);
+  const [mainImage, setMainImage] = useState('');
 
-  await connectToDatabase();
-  const property = await Property.findById(id).exec();
-  if (!property) {
-    throw new Error('Property not found');
-  }
-  return property;
-}
+  useEffect(() => {
+    // Fetch property details from the API
+    const fetchProperty = async () => {
+      try {
+        const response = await fetch(`/api/properties/view-details/${id}`);
+        const data = await response.json();
+        setProperty(data.property);
+        setMainImage(data.property.imageUrl); // Set initial main image
+      } catch (error) {
+        console.error('Failed to load property details:', error);
+      }
+    };
 
-// Generate static paths for the property pages
-export async function generateStaticParams() {
-  await connectToDatabase();
-  const properties = await Property.find({}).select('_id').exec();
-  return properties.map((property) => ({
-    id: property._id.toString()
-  }));
-}
+    fetchProperty();
+  }, [id]);
 
-// The page component
-export default async function ViewProperty({ params }) {
-  const { id } = params;
-  const property = await fetchProperty(id);
+  
 
-  // Ensure property.images is an array
-  const images = Array.isArray(property.images) ? property.images : [property.images];
+  if (!property) return <div>Loading...</div>;
 
   return (
-    <main className="container mx-auto p-6">
-      <div className="relative w-full h-64 mb-4">
-        <Image
-          src={property.imageUrl}
-          alt={property.title}
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <h1 className="text-4xl font-bold">{property.title}</h1>
-      <p className="text-gray-500">{property.description}</p>
-      <p className="text-gray-400 line-through">₦{property.price}</p>
-      <p className="text-orange-500 font-bold">₦{property.discountPrice} ({property.discountPercent}% OFF)</p>
-      <p className="text-gray-700 mt-4">Location: {property.location}</p>
-      
-      {/* Display additional images */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-6">
-        {images.map((imgUrl, index) => (
-          <div key={index} className="relative w-full h-40">
+    <div className="container mx-auto p-8 mt-16">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Image Gallery Section */}
+        <div>
+          <div className="border rounded-lg overflow-hidden mb-4">
             <Image
-              src={imgUrl}
-              alt={`Image ${index + 1}`}
-              layout="fill"
-              objectFit="cover"
-              className="rounded-lg"
+              src={mainImage}
+              alt={property.title}
+              width={800}
+              height={600}
+              className="object-cover w-full"
             />
           </div>
-        ))}
-      </div>
+          <div className="grid grid-cols-5 gap-2">
+            {/* Thumbnail images */}
+            {['imageUrl', 'kitchenImageUrl', 'frontImageUrl', 'compoundImageUrl', 'sittingRoomImageUrl', 'specialPlaceImageUrl']
+              .filter((key) => property[key]) // Only include images that are present
+              .map((key) => (
+                <div
+                  key={key}
+                  className="cursor-pointer border rounded-md"
+                  onClick={() => setMainImage(property[key])}
+                >
+                  <Image
+                    src={property[key]}
+                    alt={`${key} thumbnail`}
+                    width={150}
+                    height={100}
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+          </div>
+        </div>
 
-      <div className="mt-6 flex justify-between">
-        <button className="bg-[#ff7f50] text-white py-2 px-4 rounded">Contact Agent</button>
-        <button className="bg-blue-500 text-white py-2 px-4 rounded">Call Now</button>
+        {/* Property Details Section */}
+        <div className="space-y-6">
+          <h1 className="text-3xl font-bold">{property.title}</h1>
+          <p className="text-gray-700">{property.description}</p>
+          <div className="flex space-x-4">
+            <span className="font-bold">Beds:</span>
+            <span>{property.beds}</span>
+            <span className="font-bold">Baths:</span>
+            <span>{property.baths}</span>
+          </div>
+          {/* Contact and Action Buttons */}
+          <div className="space-y-4">
+            <Link href="/contact" className="bg-orange-500 block text-center text-white py-2 px-4 rounded-md w-full">
+              Contact Us
+            </Link>
+            <Link href={`mailto:info@orangesunhomes.com?subject=Inquiry about ${property.title}`} className="bg-black block text-white text-center py-2 px-4 rounded-md w-full">
+                Drop a Mail
+            </Link>
+            <Link href={`https://wa.me/2348102555210?text=${encodeURIComponent(`Hello, I'm interested in the property titled "${property.title}". Could you please provide more details?`)}`} target="_blank">
+             <button className="bg-green-500 mt-3 block text-center text-white py-2 px-4 rounded hover:bg-green-600 transition-colors">
+               WhatsApp
+           </button>
+          </Link>
+            {/* <button className="bg-white border border-black text-black py-2 px-4 rounded-md w-full">
+              Add to Cart
+            </button> */}
+          </div>
+        </div>
       </div>
-    </main>
+    </div>
   );
-}
+};
 
+export default PropertyDetail;

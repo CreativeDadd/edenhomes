@@ -559,7 +559,7 @@ export default function PropertyCard({ property }) {
           </div>
         </div>
         <div className="mt-4 flex flex-col space-y-2">
-          <Link href={`/property/${property.id}`} className="bg-black text-white text-center py-2 px-3 rounded hover:bg-gray-800">
+          <Link href={`/view-property/${property._id}`} className="bg-black text-white text-center py-2 px-3 rounded hover:bg-gray-800">
               View Details
           </Link>
           <Link href="mailto:info@orangesunhomes.com?subject=Enquiry about property"  className="bg-orange-500 text-white text-center py-2 px-3 rounded hover:bg-orange-600">

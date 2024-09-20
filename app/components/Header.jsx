@@ -321,7 +321,8 @@ export default function Header() {
           {/* <Link href="/admin/loginmodal" className="bg-[#FF7F50] hover:bg-[#FF6A35] text-white block px-3 py-2 rounded-md text-base font-medium" onClick={closeMenu}>Login</Link> */}
           {session ? (
   <>
-    <span>{session.user.email}</span> 
+    <span>{session.user.email}</span>
+    <Link rel="stylesheet" href="/admin/admin-dashboard" className="underline text-[#FF7F69]" >Admin DashBoard</Link> 
     <button onClick={() => signOut()} className="text-gray-800 hover:text-[#FF7F50] font-medium">Logout</button>
   </>
 ) : (
