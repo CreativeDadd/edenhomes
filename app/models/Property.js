@@ -554,6 +554,12 @@
 import mongoose from 'mongoose';
 
 const propertySchema = new mongoose.Schema({
+  agentId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Agent',
+    required: true,  // Ensure agentId is required and expected as an ObjectId
+  },
+
   title: {
     type: String,
     required: true,
