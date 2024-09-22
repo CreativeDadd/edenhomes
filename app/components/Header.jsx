@@ -283,13 +283,13 @@ export default function Header() {
 ) : (
   <>
     {/* SignUp Button - Use Link to navigate */}
-    <Link href="/auth/signup" className=" font-medium bg-[#FF7F50] hover:bg-[#FF6A35] text-white py-2 px-4 rounded-md  transition-all">SignUp</Link>
+    <Link href="/auth/signup" className=" font-medium bg-[#FF7F50] hover:bg-[#FF6A35] text-white py-2 px-4   transition-all rounded-full">Agents Sign Up</Link>
     
     {/* SignIn Button - Customize signIn behavior to avoid default callbackUrl */}
     <Link  
       href="/auth/signin"
-      className="text-gray-800 font-medium order border-solid border-[#ff7f50] py-1 px-6 rounded-full hover:text-[#FF7F50]">
-      SignIn
+      className=" border border-[#ff5e24] text-gray-800 font-medium  border-solid  py-1 px-6 rounded-full hover:text-[#ff5e24]"> Agents
+      Login
     </Link>
   </>
 )}
@@ -328,13 +328,13 @@ export default function Header() {
 ) : (
   <div className="flex flex-col gap-1 max-w-24">
     {/* SignUp Button - Use Link to navigate */}
-    <Link href="/auth/signup" className="text-gray-800 border border-solid border-[#ff7f50] py-0.5 px-6 rounded-full hover:text-[#FF7F50] font-medium ">SignUp</Link>
+    <Link href="/auth/signup" className="text-gray-800 border border-solid border-[#ff7f50] py-0.5 px-6 rounded-full hover:text-[#FF7F50] font-medium ">Agents SignUp</Link>
     
     {/* SignIn Button - Customize signIn behavior to avoid default callbackUrl */}
     <Link  
       href="/auth/signin"
       className="text-gray-800 hover:text-[#FF7F50] font-medium border border-solid border-[#ff7f50] py-0.5 px-6 rounded-full mt-5">
-      SignIn
+      Agents Login
     </Link>
   </div>
 )}

@@ -17,13 +17,13 @@ export default function HeroSection() {
           {/* CTA Buttons */}
           <div className="space-y-4 sm:space-y-0 sm:space-x-4 flex flex-col sm:flex-row justify-center lg:justify-start">
             <Link href="/view-property">
-              <button className="bg-[#FF6A35] hover:bg-[#FF7F50] text-white font-semibold py-3 px-6 rounded-md transition-all">
-                View Listings
+              <button className="bg-[#FF6A35] hover:bg-[#ff4b0a] text-white font-semibold py-3 px-6 rounded-md transition-all">
+                View Serviced Appartments
               </button>
             </Link>
             <Link href="/contact">
               <button className="border border-[#FF7F50] hover:bg-[#FF7F50] text-[#FF7F50] hover:text-white font-semibold py-3 px-6 rounded-md transition-all">
-                Contact Us
+                Book Accommodation
               </button>
             </Link>
           </div>

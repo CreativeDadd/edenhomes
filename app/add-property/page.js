@@ -2502,7 +2502,7 @@
 // app/add-property/page.js
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaBed, FaBath } from 'react-icons/fa';
 
 export default function AddProperty() {
@@ -2552,6 +2552,19 @@ export default function AddProperty() {
       setLoading(false);
     }
   };
+
+  
+  useEffect(() => {
+    if (formData.price && formData.discountPrice) {
+      const discountPercent = (
+        ((formData.price - formData.discountPrice) / formData.price) * 100
+      ).toFixed(2);
+      setFormData((prev) => ({ ...prev, discountPercent }));
+    }
+  }, [formData.price, formData.discountPrice]);
+
+
+
 
   // Function to handle form submission
   const handleSubmit = async (e) => {
@@ -2637,14 +2650,20 @@ export default function AddProperty() {
           className="border border-gray-300 p-3 rounded-md"
           required
         />
-        <input
+        {/* <input
           type="number"
           placeholder="Discount Percent"
           value={formData.discountPercent}
           onChange={(e) => setFormData({ ...formData, discountPercent: e.target.value })}
           className="border border-gray-300 p-3 rounded-md"
           required
-        />
+        /> */}
+        {/* Display calculated discount percentage */}
+        {formData.discountPercent && (
+            <div className="text-green-500">
+              Discount: {formData.discountPercent}%
+            </div>
+          )}
         <input
           type="text"
           placeholder="Location"

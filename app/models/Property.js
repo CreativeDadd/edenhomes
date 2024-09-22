@@ -554,6 +554,8 @@
 import mongoose from 'mongoose';
 
 const propertySchema = new mongoose.Schema({
+ 
+
   title: {
     type: String,
     required: true,
@@ -610,11 +612,8 @@ const propertySchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-  agentId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    default: null, 
-  },
+  agentId: { type: mongoose.Schema.Types.ObjectId, ref: 'Agent', required: false },
+
   status: {
     type: String,
     enum: ['pending', 'approved', 'rejected'], 
