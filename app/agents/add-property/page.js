@@ -352,16 +352,84 @@
 
 
 
-import AddProperty from '@/app/components/AddProperty'
-import React from 'react'
+// import AddProperty from '@/app/components/AddProperty'
+// import React from 'react'
+
+// const AgentsAddPropertyPage = () => {
+//   return (
+//     <>
+//       <AddProperty />
+
+//     </>
+//   )
+// }
+
+// export default AgentsAddPropertyPage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// app/agents/add-property/page.js
+import AddProperty from '@/app/components/AddProperty';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
 
 const AgentsAddPropertyPage = () => {
+  const [agentId, setAgentId] = useState(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    // Fetch the agentId from API based on current session or context
+    const fetchAgentId = async () => {
+      try {
+        const res = await fetch('/api/agents/getAgentId');
+        if (res.ok) {
+          const data = await res.json();
+          setAgentId(data.agentId);
+        } else {
+          console.error('Failed to fetch agentId');
+        }
+      } catch (error) {
+        console.error('An error occurred while fetching agentId', error);
+      }
+    };
+
+    fetchAgentId();
+  }, []);
+
+  if (!agentId) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <>
-      <AddProperty />
-
+      <AddProperty agentId={agentId} />
     </>
-  )
-}
+  );
+};
 
-export default AgentsAddPropertyPage
+export default AgentsAddPropertyPage;
