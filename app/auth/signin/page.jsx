@@ -211,7 +211,7 @@ const handleSubmit = async (e) => {
         </button>
 
         <div className="text-center mt-4">
-          <span className="text-gray-600">Don't have an account? </span>
+          <span className="text-gray-600">Don&apos;t have an account? </span>
           <a href="/auth/signup" className="text-[#FF7F50] hover:underline">Sign Up</a>
         </div>
       </form>

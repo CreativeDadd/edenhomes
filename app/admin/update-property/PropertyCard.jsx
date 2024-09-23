@@ -86,6 +86,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const PropertyCard = ({ property, onDelete }) => {
   const router = useRouter();
@@ -123,7 +124,7 @@ const PropertyCard = ({ property, onDelete }) => {
   return (
     <>
       <div className="bg-white shadow-md rounded-lg p-4 mb-4 flex items-center">
-        <img
+        <Image width={100} height={100}
           src={property.imageUrl}
           alt={property.title}
           className="w-24 h-24 object-cover rounded-md mr-4"
