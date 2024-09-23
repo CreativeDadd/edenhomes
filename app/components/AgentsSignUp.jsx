@@ -235,6 +235,9 @@ export default function AgentsSignUp() {
     setShowModal(false);
     router.push('/');
   };
+  
+
+  
 
   return (
     <div className="container mx-auto p-6 mt-12 max-w-lg">
