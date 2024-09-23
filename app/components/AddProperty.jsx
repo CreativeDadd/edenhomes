@@ -911,13 +911,15 @@
 
 
 
-
+"use client"
 
 // app/components/AddProperty.js
 import { useState, useEffect } from 'react';
 import { FaBed, FaBath } from 'react-icons/fa';
+import  { useRouter }  from 'next/navigation';
 
 export default function AddProperty({ closeModal, agentId }) {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -944,6 +946,7 @@ export default function AddProperty({ closeModal, agentId }) {
       ).toFixed(2);
       setFormData((prev) => ({ ...prev, discountPercent }));
     }
+    
   }, [formData.price, formData.discountPrice]);
 
   const handleImageUpload = async (e, imageType) => {

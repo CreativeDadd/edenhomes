@@ -392,10 +392,10 @@
 
 
 
-
+'use client'
 // app/agents/add-property/page.js
 import AddProperty from '@/app/components/AddProperty';
-import { useRouter } from 'next/router';
+import  { useRouter }  from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
 const AgentsAddPropertyPage = () => {
