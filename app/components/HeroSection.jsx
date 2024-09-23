@@ -34,7 +34,7 @@ export default function HeroSection() {
           <Image
             width={1100}
             height={1100}
-            src="/images/logo.svg"
+            src="/images/orangesunHEROimg.jpg"
             alt="Luxury home"
             className="rounded-lg max-w-full h-auto"
           />
