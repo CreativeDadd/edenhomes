@@ -916,6 +916,7 @@
 // app/components/AddProperty.js
 import { useState, useEffect } from 'react';
 import { FaBed, FaBath } from 'react-icons/fa';
+import Image from 'next/image';
 
 export default function AddProperty({ closeModal, agentId }) {
   const router = useRouter();

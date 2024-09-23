@@ -154,7 +154,7 @@ const PropertyCard = ({ property, onDelete }) => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 shadow-lg">
             <h3 className="text-xl font-semibold mb-4">
-              Are you sure you want to delete <span className="text-blue-800 underline">"{property.title}"?</span>
+              Are you sure you want to delete <span className="text-blue-800 underline">&quot;{property.title}&quot;?</span>
             </h3>
             <p className="mb-4 text-red-600 font-bold ">This action is not reversible !</p>
             <div className="flex justify-end space-x-4">

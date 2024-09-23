@@ -240,7 +240,7 @@ export default function AgentsSignUp() {
     <div className="container mx-auto p-6 mt-12 max-w-lg">
       <div className="text-black mb-6 text-center mt-6">
       <h2 className="text-3xl font-bold text-black ">Are You an Experienced Property Agent?</h2>
-      <p className="text-[#ff7f50] pt-4"> (We Care About Your Success. Fill the Form to Sign Up.)</p>
+      <p className="text-green-500 pt-4"> (We Care About Your Success. Fill the Form to Sign Up.)</p>
       </div>
       <form onSubmit={handleSignUp} className="space-y-6 bg-white p-6 shadow-lg rounded-lg">
         <input

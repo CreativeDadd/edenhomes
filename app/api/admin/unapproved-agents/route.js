@@ -84,6 +84,8 @@
 import Property from '@/app/models/Property';
 import connectToDatabase from '@/app/lib/mongodb';
 import { isAdmin } from '@/app/lib/auth';
+export const dynamic = 'force-dynamic';
+
 
 export async function GET(req) {
   try {
