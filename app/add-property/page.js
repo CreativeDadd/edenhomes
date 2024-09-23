@@ -2504,6 +2504,7 @@
 
 import { useState, useEffect } from 'react';
 import { FaBed, FaBath } from 'react-icons/fa';
+import Image from 'next/image';
 
 export default function AddProperty() {
   const [formData, setFormData] = useState({
@@ -2701,7 +2702,7 @@ export default function AddProperty() {
         <label className="flex flex-col">
           <span className="font-bold">Main Image</span>
           <input type="file" onChange={(e) => handleImageUpload(e, 'imageUrl')} required />
-          {formData.imageUrl && <img src={formData.imageUrl} alt="Main" className="mt-2 h-32 w-full object-cover" />}
+          {formData.imageUrl && <Image width={100} height={100} src={formData.imageUrl} alt="Main" className="mt-2 h-32 w-full object-cover" />}
         </label>
 
         {/* Additional image uploads */}
@@ -2709,35 +2710,35 @@ export default function AddProperty() {
           <span className="font-bold">Kitchen Image</span>
           <input type="file" onChange={(e) => handleImageUpload(e, 'kitchenImageUrl')} required />
           {formData.kitchenImageUrl && (
-            <img src={formData.kitchenImageUrl} alt="Kitchen" className="mt-2 h-32 w-full object-cover" />
+            <Image width={100} height={100} src={formData.kitchenImageUrl} alt="Kitchen" className="mt-2 h-32 w-full object-cover" />
           )}
         </label>
         <label className="flex flex-col">
           <span className="font-bold">Front Image</span>
           <input type="file" onChange={(e) => handleImageUpload(e, 'frontImageUrl')} required />
           {formData.frontImageUrl && (
-            <img src={formData.frontImageUrl} alt="Front" className="mt-2 h-32 w-full object-cover" />
+            <Image width={100} height={100} src={formData.frontImageUrl} alt="Front" className="mt-2 h-32 w-full object-cover" />
           )}
         </label>
         <label className="flex flex-col">
           <span className="font-bold">Compound Image</span>
           <input type="file" onChange={(e) => handleImageUpload(e, 'compoundImageUrl')} required />
           {formData.compoundImageUrl && (
-            <img src={formData.compoundImageUrl} alt="Compound" className="mt-2 h-32 w-full object-cover" />
+            <Image width={100} height={100} src={formData.compoundImageUrl} alt="Compound" className="mt-2 h-32 w-full object-cover" />
           )}
         </label>
         <label className="flex flex-col">
           <span className="font-bold">Sitting Room Image</span>
           <input type="file" onChange={(e) => handleImageUpload(e, 'sittingRoomImageUrl')} required />
           {formData.sittingRoomImageUrl && (
-            <img src={formData.sittingRoomImageUrl} alt="Sitting Room" className="mt-2 h-32 w-full object-cover" />
+            <Image width={100} height={100} src={formData.sittingRoomImageUrl} alt="Sitting Room" className="mt-2 h-32 w-full object-cover" />
           )}
         </label>
         <label className="flex flex-col">
           <span className="font-bold">Special Place Image (Optional)</span>
           <input type="file" onChange={(e) => handleImageUpload(e, 'specialPlaceImageUrl')} />
           {formData.specialPlaceImageUrl && (
-            <img src={formData.specialPlaceImageUrl} alt="Special Place" className="mt-2 h-32 w-full object-cover" />
+            <Image width={100} height={100} src={formData.specialPlaceImageUrl} alt="Special Place" className="mt-2 h-32 w-full object-cover" />
           )}
         </label>
 

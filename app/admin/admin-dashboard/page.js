@@ -163,7 +163,7 @@ export default function AdminDashboard() {
           </Link>
           <Link href="/admin/properties">
             <button className="glass-button">
-              Approve Agents' Property Posts
+              Approve Agents Property Posts
             </button>
           </Link>
           <button

@@ -3,6 +3,7 @@
 
 import React, { useEffect, useState } from 'react';
 import PropertyCard from './PropertyCard';
+import Image from 'next/image';
 
 const UpdatePropertiesPage = () => {
   const [properties, setProperties] = useState([]);
