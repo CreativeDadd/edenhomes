@@ -2,6 +2,8 @@
 import Agent from '@/app/models/Agent';
 import connectToDatabase from '@/app/lib/mongodb';
 import { getSession } from 'next-auth/react';
+export const dynamic = 'force-dynamic';
+
 
 export async function GET(req) {
   try {
