@@ -2,6 +2,8 @@
 
 import { getSession } from 'next-auth/react'; // Assuming you use next-auth for authentication
 import connectToDatabase from '@/app/lib/mongodb'; // Replace this with your database connection
+export const dynamic = 'force-dynamic';
+
 
 export async function GET(req) {
   try {
