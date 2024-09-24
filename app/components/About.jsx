@@ -164,11 +164,11 @@ export default function About() {
           {/* Text Section */}
           <div className="lg:w-1/2 mb-12 lg:mb-0">
             <p className="text-gray-600 text-lg leading-relaxed mb-6">
-              Welcome to Orange-Sun Homes Limited, where your real estate dreams come to life. We are a comprehensive real estate company dedicated to providing exceptional services that cater to all your property needs. Whether you're looking to rent a home, buy land, develop property, or find the perfect getaway accommodation, we're here to help.
+              Welcome to Orange-Sun Homes Limited, where your real estate dreams come to life. We are a comprehensive real estate company dedicated to providing exceptional services that cater to all your property needs. Whether you&apos;re looking to rent a home, buy land, develop property, or find the perfect getaway accommodation, we're here to help.
             </p>
             <h3 className="text-3xl font-semibold text-gray-800 mb-4">Our Mission</h3>
             <p className="text-gray-600 text-lg leading-relaxed mb-6">
-              Our mission is to make the process of finding, renting, or owning a property as seamless and stress-free as possible. We believe that everyone deserves a place to call home, whether it's a long-term residence, a temporary relocation, or a luxurious vacation spot. We strive to offer top-notch services that meet the diverse needs of our clients.
+              Our mission is to make the process of finding, renting, or owning a property as seamless and stress-free as possible. We believe that everyone deserves a place to call home, whether it&apos;s a long-term residence, a temporary relocation, or a luxurious vacation spot. We strive to offer top-notch services that meet the diverse needs of our clients.
             </p>
             <h3 className="text-3xl font-semibold text-gray-800 mb-4">What We Do</h3>
             <ul className="list-disc list-inside text-gray-600 text-lg leading-relaxed mb-6">
@@ -179,7 +179,7 @@ export default function About() {
             </ul>
             <h3 className="text-3xl font-semibold text-gray-800 mb-4">Our Values</h3>
             <p className="text-gray-600 text-lg leading-relaxed mb-6">
-              At Orange-Sun Homes, we are driven by a commitment to excellence, integrity, and customer satisfaction. We believe in building lasting relationships based on trust and transparency. Our team is passionate about real estate and dedicated to helping you find the perfect property, whether it’s for living, investing, or vacationing.
+              At Orange-Sun Homes, we are driven by a commitment to excellence, integrity, and customer satisfaction. We believe in building lasting relationships based on trust and transparency. Our team is passionate about real estate and dedicated to helping you find the perfect property, whether it&apos;s for living, investing, or vacationing.
             </p>
             <h3 className="text-3xl font-semibold text-gray-800 mb-4">Why Choose Us?</h3>
             <ul className="list-disc list-inside text-gray-600 text-lg leading-relaxed mb-6">
@@ -188,7 +188,7 @@ export default function About() {
               <li><strong>Comprehensive Support:</strong> Assistance from the first consultation to the final transaction, ensuring a positive experience.</li>
             </ul>
             <p className="text-gray-600 text-lg leading-relaxed mb-6">
-              Whether you're looking for a new place to call home, a vacation spot to unwind, or an investment opportunity, Orange-Sun Homes is here to help you achieve your real estate dreams. Contact us today to find out how we can assist you.
+              Whether you&apos;re looking for a new place to call home, a vacation spot to unwind, or an investment opportunity, Orange-Sun Homes is here to help you achieve your real estate dreams. Contact us today to find out how we can assist you.
             </p>
           </div>
 
