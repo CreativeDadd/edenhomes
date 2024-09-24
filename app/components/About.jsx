@@ -164,7 +164,7 @@ export default function About() {
           {/* Text Section */}
           <div className="lg:w-1/2 mb-12 lg:mb-0">
             <p className="text-gray-600 text-lg leading-relaxed mb-6">
-              Welcome to Orange-Sun Homes Limited, where your real estate dreams come to life. We are a comprehensive real estate company dedicated to providing exceptional services that cater to all your property needs. Whether you&apos;re looking to rent a home, buy land, develop property, or find the perfect getaway accommodation, we're here to help.
+              Welcome to Orange-Sun Homes Limited, where your real estate dreams come to life. We are a comprehensive real estate company dedicated to providing exceptional services that cater to all your property needs. Whether you&apos;re looking to rent a home, buy land, develop property, or find the perfect getaway accommodation, we&apos;re here to help.
             </p>
             <h3 className="text-3xl font-semibold text-gray-800 mb-4">Our Mission</h3>
             <p className="text-gray-600 text-lg leading-relaxed mb-6">
