@@ -218,8 +218,7 @@
 
 
 
-'use client'; // Ensure that this is a client component
-
+'use client'; 
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -247,7 +246,7 @@ export default function Header() {
               <Image src="/images/logo.svg" alt="brandlogo" width={60} height={60}  priority />
             </Link>
             <Link href="/" className="text-xl font-bold text-[#FF7F50] hidden sm:flex">
-              Orange-Sun Homes Ltd.
+              Orange-Sun Homes
             </Link>
           </div>
 
@@ -255,10 +254,10 @@ export default function Header() {
           <div className="hidden lg:flex space-x-8 items-center">
             <Link href="/" className="text-gray-800 hover:text-[#FF7F50] font-medium">Home</Link>
             <Link href="/view-property" className="text-gray-800 hover:text-[#FF7F50] font-medium">Properties</Link>
-            <Link href="/about" className="text-gray-800 hover:text-[#FF7F50] font-medium">About Us</Link>
+            <Link href="/about" className="text-gray-800 hover:text-[#FF7F50] font-medium">About</Link>
             <Link href="/contact" className="text-gray-800 hover:text-[#FF7F50] font-medium">Contact</Link>
             <Link href="/testimonials" className="text-gray-800 hover:text-[#FF7F50] font-medium">Testimonials</Link>
-            <Link href="/blog-nav" className="text-gray-800 hover:text-[#FF7F50] font-medium">Blog/News</Link>
+            <Link href="/blog-nav" className="text-gray-800 hover:text-[#FF7F50] font-medium">Blog</Link>
             {/* <Link href="/admin/loginmodal" className="bg-[#FF7F50] hover:bg-[#FF6A35] text-white py-2 px-4 rounded-md font-semibold transition-all">Admin Login</Link> */}
 
             {/* {session ? (
@@ -283,7 +282,7 @@ export default function Header() {
 ) : (
   <>
     {/* SignUp Button - Use Link to navigate */}
-    <Link href="/auth/signup" className=" font-medium bg-[#FF7F50] hover:bg-[#FF6A35] text-white py-2 px-4   transition-all rounded-full">Agents Sign Up</Link>
+    <Link href="/auth/signup" className=" font-medium bg-[#FF7F50] hover:bg-[#FF6A35] text-white py-1 px-4   transition-all rounded-full">Agents SignUp</Link>
     
     {/* SignIn Button - Customize signIn behavior to avoid default callbackUrl */}
     <Link  
