@@ -2552,6 +2552,8 @@ export default function AddProperty() {
     } finally {
       setLoading(false);
     }
+    console.log("Cloudinary response:", data);
+
   };
 
   
