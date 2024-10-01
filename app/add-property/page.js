@@ -2506,6 +2506,7 @@ import { useState, useEffect } from 'react';
 import { FaBed, FaBath } from 'react-icons/fa';
 import Image from 'next/image';
 
+
 export default function AddProperty() {
   const [formData, setFormData] = useState({
     title: '',
@@ -2552,7 +2553,6 @@ export default function AddProperty() {
     } finally {
       setLoading(false);
     }
-    console.log("Cloudinary response:", data);
 
   };
 
@@ -2572,6 +2572,8 @@ export default function AddProperty() {
   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // const router = useRouter();
+
 
     // Check for missing required fields and alert the user if found
     for (const field in formData) {
@@ -2590,6 +2592,7 @@ export default function AddProperty() {
 
       if (response.ok) {
         alert('Property added successfully!');
+
         // Reset form
         setFormData({
           title: '',

@@ -282,12 +282,10 @@
 
 
 
+//app/view-property/page.js
 
-
-// app/home/page.js
 import connectToDatabase from '@/app/lib/mongodb';
 import Property from '@/app/models/Property';
-import PropertyCard from '@/app/components/PropertyCard';
 import SearchablePropertyList from '../components/SearchablePropertyList';
 
 export default async function HomePage() {
