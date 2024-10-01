@@ -303,8 +303,11 @@ import HomeList from './components/HomeList';
 
 export default async function HomePage() {
   // Fetch data directly inside the server component
+  console.log("before");
+  
   await connectToDatabase();
   let properties = await Property.find({}).lean();
+  console.log("after")
 
   // Convert MongoDB objects to plain JSON
   properties = JSON.parse(JSON.stringify(properties));
