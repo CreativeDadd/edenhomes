@@ -14,3 +14,4 @@ export async function GET() {
     return NextResponse.json({ message: 'Failed to fetch properties' }, { status: 500 });
   }
 }
+
