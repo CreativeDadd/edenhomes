@@ -1,5 +1,3 @@
-
-
 import connectToDatabase from './lib/mongodb';
 import Property from './models/Property';
 import PropertyCard from './components/PropertyCard';
@@ -9,10 +7,11 @@ import TestimonialSection from './components/Testimonials';
 import BlogPage from './components/BlogPage';
 import FAQ from './components/FAQ';
 import HomeList from './components/HomeList';
+import DisplayPropertyLists from './components/DisplayPropertyLists';
+
 
 export default async function HomePage() {
   // Fetch data directly inside the server component
-  console.log("before");
   
   await connectToDatabase();
   let properties = await Property.find({}).lean();
@@ -38,6 +37,8 @@ export default async function HomePage() {
       <TestimonialSection />
       <BlogPage />
       <FAQ />
+
+      <DisplayPropertyLists  />
     </main>
   );
 }

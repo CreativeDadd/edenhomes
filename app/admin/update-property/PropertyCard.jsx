@@ -79,8 +79,6 @@
 
 
 
-
-
 // app/admin/update-properties/PropertyCard.js
 'use client';
 
@@ -95,7 +93,7 @@ const PropertyCard = ({ property, onDelete }) => {
   // Handle delete confirmation
   const handleDeleteConfirm = async () => {
     try {
-      const response = await fetch(`/api/properties/admin-delete-prperties/${property._id}`, {
+      const response = await fetch(`/api/properties/${property._id}`, {
         method: 'DELETE',
       });
       if (response.ok) {
