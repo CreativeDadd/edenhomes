@@ -4,10 +4,7 @@ import mongoose from 'mongoose';
 const propertySchema = new mongoose.Schema({
  
 
-  title: {
-    type: String,
-    required: true,
-  },
+  title: {type: String, required: true },
   description: {
     type: String,
     required: true,
@@ -60,7 +57,7 @@ const propertySchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-  agentId: { type: mongoose.Schema.Types.ObjectId, ref: 'Agent', required: false },
+  // agentId: { type: mongoose.Schema.Types.ObjectId, ref: 'Agent', required: false },
 
   // status: {
   //   type: String,
@@ -73,5 +70,8 @@ const propertySchema = new mongoose.Schema({
   },
 });
 
-const Property = mongoose.models.Property || mongoose.model('Property', propertySchema);
-export default Property;
+// const Property = mongoose.models.Property || mongoose.model('Property', propertySchema);
+// export default Property;
+// export default mongoose.models.Blog || mongoose.model('Blog', BlogSchema);
+export default mongoose.models.Property || mongoose.model('Property', propertySchema);
+
