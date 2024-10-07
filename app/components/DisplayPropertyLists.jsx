@@ -90,41 +90,42 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
-export default function BlogPage() {
-  const [blogs, setBlogs] = useState([]);
+export default function DisplayPropertyLists() {
+  const [properis, setProperis] = useState([]);
 
   useEffect(() => {
     // Fetch blogs from the API
-    const fetchBlogs = async () => {
-      const response = await fetch('/api/blogs');
+    const fetchProperis = async () => {
+      const response = await fetch('/api/proparis');
       const data = await response.json();
-      setBlogs(data);
+      setProperis(data);
     };
 
-    fetchBlogs();
+    fetchProperis();
   }, []);
 
   return (
     <div className="p-8 mt-16">
-      <h1 className="text-4xl font-bold mb-8 text-orange-600">Our Latest Blogs</h1>
+      <h1 className="text-4xl font-bold mb-8 text-orange-600">Our Latest Serviced Accommodations</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {blogs.map((blog) => (
-          <div key={blog._id} className="border rounded-lg shadow-md overflow-hidden">
+        {properis.map((properi) => (
+          <div key={properi._id} className="border rounded-lg shadow-md overflow-hidden">
             <Image
-              src={blog.imageUrl}
-              alt={blog.title}
+              src={properi.imageUrl}
+              alt={properi.title}
               width={400}
               height={250}
               className="w-full h-40 object-cover"
             />
             <div className="p-4">
-              <h2 className="text-2xl font-bold text-orange-600 mb-2">{blog.title}</h2>
-              <p className="text-gray-700 mb-4">{blog.content.slice(0, 100)}...</p>
-              <a href={`/blog/${blog._id}`} className="text-orange-500 hover:text-[#FF7F50]">
-                Read More
-              </a>
+              <h2 className="text-2xl font-bold text-orange-600 mb-2">{properi.title}</h2>
+              <p className="text-gray-700 mb-4">{properi.content.slice(0, 100)}...</p>
+              <Link href={`/view-property/${properi._id}`} className="bg-black text-white text-center py-2 px-3 rounded hover:bg-gray-800">
+              View All Details
+          </Link>
             </div>
           </div>
         ))}

@@ -1,11 +1,9 @@
-
-
 'use client';
 
 import React, { useState } from 'react';
 import { CldImage } from 'next-cloudinary';
 
-export default function AddBlog() {
+export default function AddProperis() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState(null);
@@ -51,40 +49,40 @@ export default function AddBlog() {
     if (!imageUrl) return;
 
     // Send blog data to the API
-    const response = await fetch('/api/blogs', {
+    const response = await fetch('api/propars', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title, content, imageUrl }),
     });
 
     if (response.ok) {
-      alert('Blog added successfully!');
+      alert('PROPERTY added successfully!');
       setTitle('');
       setContent('');
       setImage(null);
       setUploadedImageUrl('');
     } else {
-      alert('Failed to add blog.');
+      alert('Failed to add Property.');
     }
   };
 
   return (
     <div className="p-8 mt-16 max-w-4xl mx-auto">
-      <h1 className="text-4xl font-bold mb-8 text-orange-600">Add New Blog</h1>
+      <h1 className="text-4xl font-bold mb-8 text-orange-600">Add New Serviced Property</h1>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="text"
-          placeholder="Blog Title"
+          placeholder="Title"
           className="w-full p-2 border border-gray-300 rounded"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
         />
-        <textarea
-          placeholder="Blog Content"
+        <input
+          type="text"
+          placeholder="Description"
           className="w-full p-2 border border-gray-300 rounded"
-          rows="6"
           value={content}
           onChange={(e) => setContent(e.target.value)}
           required
@@ -101,9 +99,10 @@ export default function AddBlog() {
           <CldImage width="400" height="250" src={uploadedImageUrl} alt="Uploaded image" />
         )}
         <button type="submit" className="w-full bg-gradient-to-r from-[#FF7F50] to-red-500 text-white py-2 rounded">
-          Add Blog
+          Add Property
         </button>
       </form>
     </div>
   );
 }
+

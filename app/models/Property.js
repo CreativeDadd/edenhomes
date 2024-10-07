@@ -59,11 +59,11 @@ const propertySchema = new mongoose.Schema({
   },
   // agentId: { type: mongoose.Schema.Types.ObjectId, ref: 'Agent', required: false },
 
-  // status: {
-  //   type: String,
-  //   enum: ['pending', 'approved', 'rejected'], 
-  //   default: 'pending',
-  // },
+  status: {
+    type: String,
+    enum: ['pending', 'approved', 'rejected'], 
+    default: 'pending',
+  },
   createdAt: {
     type: Date,
     default: Date.now, 
