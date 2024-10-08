@@ -215,7 +215,152 @@
 
 
 
-// app/properties/[id]/page.js
+// // app/properties/[id]/page.js
+// 'use client';
+
+// import React, { useState, useEffect } from 'react';
+// import { useParams } from 'next/navigation';
+// import Image from 'next/image';
+// import Link from 'next/link';
+// import { FaBed, FaBath } from 'react-icons/fa';
+
+
+// const PropertyDetail = () => {
+//   const { id } = useParams();
+//   const [property, setProperty] = useState(null);
+//   const [mainImage, setMainImage] = useState('');
+//   const [details, setDetails] = useState({kit:"Kichen", front:"Frontage", comp:"Compound", sit:"Sitting Room", spec:"Special Place"});
+
+//   useEffect(() => {
+//     // Fetch property details from the API
+//     const fetchProperty = async () => {
+//       try {
+//         const response = await fetch(`/api/properties/view-details/${id}`);
+//         const data = await response.json();
+//         setProperty(data.property);
+//         setMainImage(data.property.imageUrl); // Set initial main image
+//       } catch (error) {
+//         console.error('Failed to load property details:', error);
+//       }
+//     };
+
+//     fetchProperty();
+//   }, [id]);
+
+  
+
+//   if (!property) return <div>Loading...</div>;
+
+//   return (
+//     <div className="container mx-auto p-8 mt-16">
+//       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+//         {/* Image Gallery Section */}
+//         <div>
+//           <div className="border rounded-lg overflow-hidden mb-4">
+//             <Image
+//               src={mainImage}
+//               alt={property.title}
+//               width={800}
+//               height={600}
+//               className="object-cover w-full"
+//             />
+//           </div>
+//           <div className="grid grid-cols-5 gap-2">
+//             {/* Thumbnail images */}
+//             {['imageUrl', 'kitchenImageUrl', 'frontImageUrl', 'compoundImageUrl', 'sittingRoomImageUrl', 'specialPlaceImageUrl']
+//               .filter((key) => property[key]) // Only include images that are present
+//               .map((key) => (
+//                 <div
+//                   key={key}
+//                   className="cursor-pointer border rounded-md"
+//                   onClick={() => setMainImage(property[key])}
+//                 >
+//                   <Image
+//                     src={property[key]}
+//                     alt={`${key} thumbnail`}
+//                     width={150}
+//                     height={100}
+//                     className="object-cover"
+//                   />
+//                   {details.map((detail)=>(
+//                     <p key={k} >{detail.k}</p>
+//                   ))
+//                   }
+//                 </div>
+//               ))}
+//           </div>
+//         </div>
+
+//         {/* Property Details Section */}
+//         <div className="space-y-6">
+//           <h1 className="text-3xl font-bold">{property.title}</h1>
+//           <p className="text-gray-700">{property.description}</p>
+//           {/* <div className="flex space-x-4">
+//             <span className="font-bold">Beds:</span>
+//             <span>{property.beds}</span>
+//             <span className="font-bold">Baths:</span>
+//             <span>{property.baths}</span>
+//           </div> */}
+
+// <div className="flex justify-between items-center mt-4 text-gray-600">
+//           <div className="flex items-center">
+//             <FaBed className="mr-1 text-black" />
+//             <span>{property.bedrooms} Beds</span>
+//           </div>
+//           <div className="flex items-center">
+//             <FaBath className="mr-1 text-black" />
+//             <span>{property.bathrooms} Baths</span>
+//           </div>
+//         </div>
+
+
+//           {/* Contact and Action Buttons */}
+//           <div className="space-y-4">
+//             <Link href="/contact" className="bg-orange-500 block text-center text-white py-2 px-4 rounded-md w-full">
+//               Book This Space
+//             </Link>
+//             <Link href={`mailto:info@orangesunhomes.com?subject=Inquiry about ${property.title}`} className="bg-black block text-white text-center py-2 px-4 rounded-md w-full">
+//                 Drop a Mail
+//             </Link>
+//             <Link href={`https://wa.me/2348102555210?text=${encodeURIComponent(`Hello, I'm interested in the property titled "${property.title}" "${`https://newestateprj.vercel.app/view-property/${property._id}`}". Could you please provide more details?`)}` }  target="_blank" className="bg-green-500 mt-3 block text-center text-white py-2 px-4 rounded hover:bg-green-600 transition-colors w-full">
+            
+//                WhatsApp
+       
+//           </Link>
+//             {/* <button className="bg-white border border-black text-black py-2 px-4 rounded-md w-full">
+//               Add to Cart
+//             </button> */}
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default PropertyDetail;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -224,11 +369,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FaBed, FaBath } from 'react-icons/fa';
 
-
 const PropertyDetail = () => {
   const { id } = useParams();
   const [property, setProperty] = useState(null);
   const [mainImage, setMainImage] = useState('');
+  const [details, setDetails] = useState({
+    kitchenImageUrl: "Kitchen", 
+    frontImageUrl: "Frontage", 
+    compoundImageUrl: "Compound", 
+    sittingRoomImageUrl: "Sitting Room", 
+    specialPlaceImageUrl: "Special Place"
+  });
 
   useEffect(() => {
     // Fetch property details from the API
@@ -245,8 +396,6 @@ const PropertyDetail = () => {
 
     fetchProperty();
   }, [id]);
-
-  
 
   if (!property) return <div>Loading...</div>;
 
@@ -281,7 +430,7 @@ const PropertyDetail = () => {
                     height={100}
                     className="object-cover"
                   />
-                  <p>{property.title}</p>
+                  <p className="text-center mt-1">{details[key]}</p> {/* Match name to image */}
                 </div>
               ))}
           </div>
@@ -291,24 +440,17 @@ const PropertyDetail = () => {
         <div className="space-y-6">
           <h1 className="text-3xl font-bold">{property.title}</h1>
           <p className="text-gray-700">{property.description}</p>
-          {/* <div className="flex space-x-4">
-            <span className="font-bold">Beds:</span>
-            <span>{property.beds}</span>
-            <span className="font-bold">Baths:</span>
-            <span>{property.baths}</span>
-          </div> */}
 
-<div className="flex justify-between items-center mt-4 text-gray-600">
-          <div className="flex items-center">
-            <FaBed className="mr-1 text-black" />
-            <span>{property.bedrooms} Beds</span>
+          <div className="flex justify-between items-center mt-4 text-gray-600">
+            <div className="flex items-center">
+              <FaBed className="mr-1 text-black" />
+              <span>{property.bedrooms} Beds</span>
+            </div>
+            <div className="flex items-center">
+              <FaBath className="mr-1 text-black" />
+              <span>{property.bathrooms} Baths</span>
+            </div>
           </div>
-          <div className="flex items-center">
-            <FaBath className="mr-1 text-black" />
-            <span>{property.bathrooms} Baths</span>
-          </div>
-        </div>
-
 
           {/* Contact and Action Buttons */}
           <div className="space-y-4">
@@ -316,16 +458,11 @@ const PropertyDetail = () => {
               Book This Space
             </Link>
             <Link href={`mailto:info@orangesunhomes.com?subject=Inquiry about ${property.title}`} className="bg-black block text-white text-center py-2 px-4 rounded-md w-full">
-                Drop a Mail
+              Drop a Mail
             </Link>
-            <Link href={`https://wa.me/2348102555210?text=${encodeURIComponent(`Hello, I'm interested in the property titled "${property.title}". Could you please provide more details?`)}`} target="_blank">
-             <button className="bg-green-500 mt-3 block text-center text-white py-2 px-4 rounded hover:bg-green-600 transition-colors">
-               WhatsApp
-           </button>
-          </Link>
-            {/* <button className="bg-white border border-black text-black py-2 px-4 rounded-md w-full">
-              Add to Cart
-            </button> */}
+            <Link href={`https://wa.me/2348102555210?text=${encodeURIComponent(`Hello, I'm interested in the property titled "${property.title}" "${`https://newestateprj.vercel.app/view-property/${property._id}`}". Could you please provide more details?`)}`} target="_blank" className="bg-green-500 mt-3 block text-center text-white py-2 px-4 rounded hover:bg-green-600 transition-colors w-full">
+              WhatsApp
+            </Link>
           </div>
         </div>
       </div>
