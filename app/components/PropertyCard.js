@@ -17,7 +17,7 @@ export default function PropertyCard({ property }) {
   } = property; // Destructure property
 
   return (
-    <div className="bg-white shadow-lg rounded-lg overflow-hidden max-w-sm transform transition-transform hover:scale-105 hover:shadow-xl">
+    <div className=" bg-white shadow-xl rounded-lg overflow-hidden max-w-sm transform transition-transform hover:scale-105 hover:shadow-xl">
       <div className="relative">
         {imageUrl && (
           <Image
