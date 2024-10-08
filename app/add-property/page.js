@@ -4,6 +4,8 @@
 import { useState, useEffect } from 'react';
 import { FaBed, FaBath } from 'react-icons/fa';
 import Image from 'next/image';
+import { CldImage } from 'next-cloudinary';
+
 
 
 export default function AddProperty() {
@@ -206,7 +208,7 @@ export default function AddProperty() {
         <label className="flex flex-col">
           <span className="font-bold">Main Image</span>
           <input type="file" onChange={(e) => handleImageUpload(e, 'imageUrl')} required />
-          {formData.imageUrl && <Image width={100} height={100} src={formData.imageUrl} alt="Main" className="mt-2 h-32 w-full object-cover" />}
+          {formData.imageUrl && <CldImage width={100} height={100} src={formData.imageUrl} alt="Main" className="mt-2 h-32 w-full object-cover" />}
         </label>
 
         {/* Additional image uploads */}
@@ -242,7 +244,8 @@ export default function AddProperty() {
           <span className="font-bold">Special Place Image (Optional)</span>
           <input type="file" onChange={(e) => handleImageUpload(e, 'specialPlaceImageUrl')} />
           {formData.specialPlaceImageUrl && (
-            <Image width={100} height={100} src={formData.specialPlaceImageUrl} alt="Special Place" className="mt-2 h-32 w-full object-cover" />
+            <CldImage width={100} height={100} src={formData.specialPlaceImageUrl} alt="Special Place" className="mt-2 h-32 w-full object-cover" />
+            
           )}
         </label>
 

@@ -281,6 +281,7 @@ const PropertyDetail = () => {
                     height={100}
                     className="object-cover"
                   />
+                  <p>{property.title}</p>
                 </div>
               ))}
           </div>

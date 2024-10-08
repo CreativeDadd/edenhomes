@@ -35,7 +35,7 @@ export default function PropertyCard({ property }) {
       <div className="p-4">
         <h3 className="font-semibold text-lg text-black">{title}</h3>
         <p className="text-sm text-gray-600 mt-1">{description}</p>
-        <p className=" text-gray-700 border-[#FF4500] border-solid border text-center py-2 px-3 rounded hover:bg-orange-600 text-sm mt-1" >Location: {location}</p>
+        
         <p className="text-xl font-bold text-orange-500 mt-2">
           ${discountPrice} 
           <span className="line-through text-gray-500 ml-2">${price}</span>
@@ -50,15 +50,16 @@ export default function PropertyCard({ property }) {
             <span>{bathrooms} Baths</span>
           </div>
         </div>
+        <p className="text-center py-2 px-3 rounded hover:bg-orange-600 text-sm mt-1" >Location: {location}</p>
         <div className="mt-4 flex flex-col space-y-2">
           <Link href={`/view-property/${property._id}`} className="bg-black text-white text-center py-2 px-3 rounded hover:bg-gray-800">
-              View All Details
+              View Details
           </Link>
-          <Link href="mailto:info@orangesunhomes.com?subject=Enquiry about property"  className="bg-orange-500 text-white text-center py-2 px-3 rounded hover:bg-orange-600">
+          {/* <Link href="mailto:info@orangesunhomes.com?subject=Enquiry about property"  className="bg-orange-500 text-white text-center py-2 px-3 rounded hover:bg-orange-600">
               Drop a Mail
-          </Link>
-          <Link href="contact"  className="bg-white text-black text-center border border-black py-2 px-3 rounded hover:bg-gray-100">
-              Book This Appartment
+          </Link> */}
+          <Link href="contact"  className="bg-white text-[#FF4533] text-center border border-black py-2 px-3 rounded hover:bg-gray-100">
+              Book 
           </Link>
         </div>
       </div>
