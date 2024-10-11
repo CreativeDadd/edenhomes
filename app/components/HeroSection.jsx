@@ -86,8 +86,7 @@ export default function HeroSection() {
           <span className="text-[#FF6A35]"> Orange-Sun Homes Limited</span>
         </h1>
         <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
-          Explore our curated selection of premium properties that cater to your 
-          relocation, vacation, or getaway needs, designed with luxury and comfort in mind.
+        Discover your dream home away from home for vacation, staycation, get away or short visit.
         </p>
 
         {/* CTA Buttons */}

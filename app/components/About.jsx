@@ -164,7 +164,7 @@ export default function About() {
           {/* Text Section */}
           <div className="lg:w-1/2 mb-12 lg:mb-0">
             <p className="text-gray-600 text-lg leading-relaxed mb-6">
-              Welcome to Orange-Sun Homes Limited, where your real estate dreams come to life. We are a comprehensive real estate company dedicated to providing exceptional services that cater to all your property needs. Whether you&apos;re looking to rent a home, buy land, develop property, or find the perfect getaway accommodation, we&apos;re here to help.
+            Orange-Sun Homes is a national relocation expert that provides comfy  accommodation services for vacations, staycation, get away , short visits or relocation. We give our clients a wide range of options from our portfolio of select properties so that they get that home away from home experience.
             </p>
             <h3 className="text-3xl font-semibold text-gray-800 mb-4">Our Mission</h3>
             <p className="text-gray-600 text-lg leading-relaxed mb-6">
