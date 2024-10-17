@@ -47,7 +47,7 @@ export default function WhyUseOrangeSunHomes() {
         </h2>
         <p className="text-lg text-gray-600 mb-6">
           We make it easy to explore, compare, and book properties across the
-          country. Whether you're at home or on the go, our platform ensures you
+          country. Whether you&apos;re at home or on the go, our platform ensures you
           have everything you need at your fingertips.
         </p>
         <ul className="list-disc list-inside space-y-2">
