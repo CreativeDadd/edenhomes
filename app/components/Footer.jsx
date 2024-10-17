@@ -57,9 +57,9 @@ const Footer = () => {
           <p>Site Map</p>
           <ul className="md:inline-flex space-x-6 ">
             <li><Link href="/" className="hover:text-orange-400">Home</Link></li>
-            <li><Link href="/properties" className="hover:text-orange-400">Properties</Link></li>
+            <li><Link href="/view-property" className="hover:text-orange-400">Properties</Link></li>
             <li><Link href="/about" className="hover:text-orange-400">About Us</Link></li>
-            <li><Link href="/blog" className="hover:text-orange-400">Blog</Link></li>
+            <li><Link href="/blog-nav" className="hover:text-orange-400">Blog</Link></li>
             <li><Link href="/contact" className="hover:text-orange-400">Contact Us</Link></li>
             <li><Link href="/privacy" className="hover:text-orange-400">Privacy Policy</Link></li>
             <li><Link href="/terms" className="hover:text-orange-400">Terms of Service</Link></li>
