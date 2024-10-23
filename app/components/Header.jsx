@@ -47,7 +47,7 @@ export default function Header() {
   <>
   
     <span>{session.user.email}</span>
-    <Link rel="stylesheet" href="/admin/admin-dashboard" className="underline text-[#FF7F69]" >Admin DashBoard</Link> 
+    <Link rel="stylesheet" href="/admin/admin-dashboard" className=" text-[#FF7F69]" >Admin DashBoard</Link> 
     
   </>
 ) : (
