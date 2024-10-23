@@ -6,7 +6,7 @@ export default function PrivacyPolicy() {
       <div className="p-8 mt-24 max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold mb-6">Privacy Policy</h1>
         <p className="mb-4">
-          Welcome to Orange-Sun Homes Limited ("we", "our", "us"). We are committed to protecting and respecting your privacy. This privacy policy explains how we collect, use, and share your personal information when you use our website and services.
+          Welcome to Orange-Sun Homes Limited. We are committed to protecting and respecting your privacy. This privacy policy explains how we collect, use, and share your personal information when you use our website and services.
         </p>
         
         <h2 className="text-2xl font-semibold mt-6 mb-4">1. Information We Collect</h2>
