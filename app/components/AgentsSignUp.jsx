@@ -2,7 +2,7 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-
+import Link from 'next/link';
 export default function AgentsSignUp() {
   const [formData, setFormData] = useState({
     name: '',
@@ -101,6 +101,7 @@ export default function AgentsSignUp() {
           className="w-full p-3 border border-gray-300 rounded-md"
           required
         />
+        <Link href='/privacy' className='text-[#f50] underline'>Privacy Policy</Link>
         <button
           type="submit"
           className="w-full bg-[#FF7F50] text-white p-3 rounded-md hover:bg-[#FF4500] transition duration-300"
