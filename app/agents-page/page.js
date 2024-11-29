@@ -243,7 +243,7 @@ export default function AgentPage() {
             We partner with agents to onboard properties into our services. Our partnerships are mutually beneficial, ensuring consistent collaboration and success.
           </p>
           <p className="text-gray-600 text-lg sm:text-xl">
-            If you're ready to work with a reliable relocations company, join us today!
+            If you&apos;re ready to work with a reliable relocations company, join us today!
           </p>
         </div>
 
