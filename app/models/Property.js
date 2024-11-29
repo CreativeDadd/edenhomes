@@ -57,7 +57,7 @@ const propertySchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-  agentId: { type: mongoose.Schema.Types.ObjectId, ref: 'Agent', required: false },
+  agentId:  { type: mongoose.Schema.Types.ObjectId, ref: 'Agent', required: false },
 
   status: {
     type: String,

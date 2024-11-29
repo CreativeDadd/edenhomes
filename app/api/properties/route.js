@@ -5,10 +5,25 @@ import Property from '@/app/models/Property';
 import { getSession } from 'next-auth/react';
 import { NextResponse } from 'next/server';
 
+// export async function GET() {
+//   await connectToDatabase();
+//   const properties = await Property.find({}).lean();
+//   return NextResponse.json(properties);
+// }
+
 export async function GET() {
   await connectToDatabase();
   const properties = await Property.find({}).lean();
-  return NextResponse.json(properties);
+  
+  // Serialize the documents by converting _id to string and handling dates
+  const serializedProperties = properties.map(property => ({
+    ...property,
+    _id: property._id.toString(),
+    createdAt: property.createdAt.toISOString(),
+    agentId: property.agentId ? property.agentId.toString() : null
+  }));
+
+  return NextResponse.json(serializedProperties);
 }
 
 
