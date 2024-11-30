@@ -11,20 +11,43 @@ import { NextResponse } from 'next/server';
 //   return NextResponse.json(properties);
 // }
 
+// export async function GET() {
+//   await connectToDatabase();
+//   const properties = await Property.find({}).lean();
+  
+//   // Serialize the documents by converting _id to string and handling dates
+//   const serializedProperties = properties.map(property => ({
+//     ...property,
+//     _id: property._id.toString(),
+//     createdAt: property.createdAt.toISOString(),
+//     agentId: property.agentId ? property.agentId.toString() : null
+//   }));
+
+//   return NextResponse.json(serializedProperties);
+// }
+
+
 export async function GET() {
   await connectToDatabase();
   const properties = await Property.find({}).lean();
-  
-  // Serialize the documents by converting _id to string and handling dates
-  const serializedProperties = properties.map(property => ({
+
+  const serializedProperties = properties.map((property) => ({
     ...property,
     _id: property._id.toString(),
     createdAt: property.createdAt.toISOString(),
-    agentId: property.agentId ? property.agentId.toString() : null
+    agentId: property.agentId ? property.agentId.toString() : null,
   }));
 
   return NextResponse.json(serializedProperties);
 }
+
+
+
+
+
+
+
+
 
 
 
