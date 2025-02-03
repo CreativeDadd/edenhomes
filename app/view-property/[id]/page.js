@@ -476,6 +476,134 @@
 
 
 
+// 'use client';
+
+// import React, { useState, useEffect } from 'react';
+// import { useParams } from 'next/navigation';
+// import Image from 'next/image';
+// import Link from 'next/link';
+// import { FaBed, FaBath } from 'react-icons/fa';
+
+// const PropertyDetail = () => {
+//   const { id } = useParams();
+//   const [property, setProperty] = useState(null);
+//   const [mainImage, setMainImage] = useState('');
+//   const [details, setDetails] = useState({
+//     kitchenImageUrl: 'Kitchen',
+//     frontImageUrl: 'Frontage',
+//     compoundImageUrl: 'Compound',
+//     sittingRoomImageUrl: 'Sitting Room',
+//     specialPlaceImageUrl: 'Special Place',
+//   });
+
+//   useEffect(() => {
+//     const fetchProperty = async () => {
+//       try {
+//         const response = await fetch(`/api/properties/view-details/${id}`);
+//         const data = await response.json();
+
+//         // Ensure proper serialization
+//         setProperty({
+//           ...data.property,
+//           _id: data.property._id.toString(),
+//           createdAt: data.property.createdAt.toISOString(),
+//           agentId: data.property.agentId ? data.property.agentId.toString() : null,
+//         });
+//         setMainImage(data.property.imageUrl);
+//       } catch (error) {
+//         console.error('Failed to load property details:', error);
+//       }
+//     };
+
+//     fetchProperty();
+//   }, [id]);
+
+//   if (!property) return <div>Loading...</div>;
+
+//   return (
+//     <div className="container mx-auto p-8 mt-16">
+//       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+//         <div>
+//           <div className="border rounded-lg overflow-hidden mb-4">
+//             <Image
+//               src={mainImage}
+//               alt={property.title}
+//               width={800}
+//               height={600}
+//               className="object-cover w-full"
+//             />
+//           </div>
+//           <div className="grid grid-cols-5 gap-2">
+//             {['imageUrl', 'kitchenImageUrl', 'frontImageUrl', 'compoundImageUrl', 'sittingRoomImageUrl', 'specialPlaceImageUrl']
+//               .filter((key) => property[key])
+//               .map((key) => (
+//                 <div
+//                   key={key}
+//                   className="cursor-pointer border rounded-md"
+//                   onClick={() => setMainImage(property[key])}
+//                 >
+//                   <Image
+//                     src={property[key]}
+//                     alt={`${key} thumbnail`}
+//                     width={150}
+//                     height={100}
+//                     className="object-cover"
+//                   />
+//                   <p className="text-center mt-1">{details[key]}</p>
+//                 </div>
+//               ))}
+//           </div>
+//         </div>
+
+//         <div className="space-y-6">
+//           <h1 className="text-3xl font-bold">{property.title}</h1>
+//           <p className="text-gray-700">{property.description}</p>
+//           <div className="flex justify-between items-center mt-4 text-gray-600">
+//             <div className="flex items-center">
+//               <FaBed className="mr-1 text-black" />
+//               <span>{property.bedrooms} Beds</span>
+//             </div>
+//             <div className="flex items-center">
+//               <FaBath className="mr-1 text-black" />
+//               <span>{property.bathrooms} Baths</span>
+//             </div>
+//           </div>
+//           <div className="space-y-4">
+//             <Link href="/contact" className="bg-orange-500 block text-center text-white py-2 px-4 rounded-md w-full">
+//               Book This Space
+//             </Link>
+//             <Link href={`mailto:info@orangesunhomes.com?subject=Inquiry about ${property.title}`} className="bg-black block text-white text-center py-2 px-4 rounded-md w-full">
+//               Drop a Mail
+//             </Link>
+//             <Link href={`https://wa.me/2348102555210?text=${encodeURIComponent(`Hello, I'm interested in the property titled "${property.title}". Could you please provide more details?`)}`} target="_blank" className="bg-green-500 mt-3 block text-center text-white py-2 px-4 rounded hover:bg-green-600 transition-colors w-full">
+//               WhatsApp
+//             </Link>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default PropertyDetail;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -502,13 +630,18 @@ const PropertyDetail = () => {
         const response = await fetch(`/api/properties/view-details/${id}`);
         const data = await response.json();
 
-        // Ensure proper serialization
-        setProperty({
+        if (!data.property) {
+          console.error('Property not found');
+          return;
+        }
+
+        // Ensure valid date format
+        const formattedProperty = {
           ...data.property,
-          _id: data.property._id.toString(),
-          createdAt: data.property.createdAt.toISOString(),
-          agentId: data.property.agentId ? data.property.agentId.toString() : null,
-        });
+          createdAt: data.property.createdAt ? new Date(data.property.createdAt).toLocaleDateString() : 'N/A',
+        };
+
+        setProperty(formattedProperty);
         setMainImage(data.property.imageUrl);
       } catch (error) {
         console.error('Failed to load property details:', error);
@@ -558,6 +691,7 @@ const PropertyDetail = () => {
         <div className="space-y-6">
           <h1 className="text-3xl font-bold">{property.title}</h1>
           <p className="text-gray-700">{property.description}</p>
+          <p className="text-gray-600">Listed on: {property.createdAt}</p>
           <div className="flex justify-between items-center mt-4 text-gray-600">
             <div className="flex items-center">
               <FaBed className="mr-1 text-black" />
