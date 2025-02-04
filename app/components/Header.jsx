@@ -27,7 +27,7 @@ export default function Header() {
               <Image src="/images/logo.svg" alt="brandlogo" width={60} height={60}  priority />
             </Link>
             <Link href="/" className="text-xl font-bold text-[#FF7F50] hidden sm:flex">
-              Orange-Sun Homes
+              EdenHomes Limited
             </Link>
           </div>
 

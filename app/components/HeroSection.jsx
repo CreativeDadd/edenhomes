@@ -9,7 +9,7 @@ export default function HeroSection() {
       <div className="lg:w-1/2 flex flex-col space-y-8 text-center lg:text-left">
         <h1 className="text-4xl sm:text-6xl font-extrabold text-gray-900 leading-tight tracking-tight">
           Discover Your Dream Home with 
-          <span className="text-[#FF6A35]"> Orange-Sun Homes Limited</span>
+          <span className="text-[#FF6A35]"> EdenHomes Limited</span>
         </h1>
         <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
         Discover your dream home away from home for vacation, staycation, get away or short visit.
@@ -35,7 +35,7 @@ export default function HeroSection() {
         <Image
           width={1000}
           height={1000}
-          src="/images/orangesunHEROimg.jpg"
+          src="/images/home3.jpg"
           alt="Luxury home"
           className="rounded-lg shadow-xl max-w-full h-auto transform hover:scale-105 transition-all duration-500 ease-in-out"
         />
