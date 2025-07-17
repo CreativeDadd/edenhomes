@@ -329,7 +329,7 @@ import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import User from '@/app/models/User'; // Ensure this points to your correct model
 import bcrypt from 'bcryptjs';
-import connectToDatabase from '@/app/lib/mongodb';
+import connectToDatabase from '@/app/lib/database';
 
 export const authOptions = {
   providers: [
@@ -340,7 +340,11 @@ export const authOptions = {
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        await connectToDatabase();
+        const db = await connectToDatabase();
+        if (!db) {
+          throw new Error('Database connection failed');
+        }
+
         const user = await User.findOne({ email: credentials.email });
 
         if (!user) {
@@ -357,7 +361,12 @@ export const authOptions = {
           throw new Error('Unauthorized. Admins only.');
         }
 
-        return user;
+        return {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          role: user.role
+        };
       },
     }),
   ],

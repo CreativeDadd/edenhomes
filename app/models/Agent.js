@@ -1,53 +1,69 @@
-// import mongoose from 'mongoose';
+// app/models/Agent.js
+import connectToDatabase from '@/app/lib/database';
+import { agents } from '@/app/lib/schema';
+import { eq } from 'drizzle-orm';
 
-// const agentSchema = new mongoose.Schema({
-//   name: { type: String, required: true },
-//   email: { type: String, required: true, unique: true },
-//   phoneNumber: { type: String, required: true },
-//   password: { type: String, required: true },
-//   age: { type: Number, required: true },
-//   address: { type: String, required: true },
-//   isApproved: { type: Boolean, default: false },
-//   createdAt: { type: Date, default: Date.now },
-// });
+class Agent {
+  static async create(agentData) {
+    const db = await connectToDatabase();
+    const [agent] = await db.insert(agents).values(agentData).returning();
+    return agent;
+  }
 
-// const Agent = mongoose.models.Agent || mongoose.model('Agent', agentSchema);
+  static async findOne(query) {
+    const db = await connectToDatabase();
+    
+    if (query.email) {
+      const [agent] = await db.select().from(agents).where(eq(agents.email, query.email));
+      return agent || null;
+    }
+    
+    if (query.id) {
+      const [agent] = await db.select().from(agents).where(eq(agents.id, query.id));
+      return agent || null;
+    }
+    
+    return null;
+  }
 
-// export default Agent;
+  static async findById(id) {
+    const db = await connectToDatabase();
+    const [agent] = await db.select().from(agents).where(eq(agents.id, id));
+    return agent || null;
+  }
 
+  static async find(query = {}) {
+    const db = await connectToDatabase();
+    
+    if (query.isApproved !== undefined) {
+      return await db.select().from(agents).where(eq(agents.isApproved, query.isApproved));
+    }
+    
+    return await db.select().from(agents);
+  }
 
+  static async updateById(id, updates) {
+    const db = await connectToDatabase();
+    const [agent] = await db.update(agents).set(updates).where(eq(agents.id, id)).returning();
+    return agent;
+  }
 
+  static async deleteById(id) {
+    const db = await connectToDatabase();
+    const [agent] = await db.delete(agents).where(eq(agents.id, id)).returning();
+    return agent;
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// /app/models/Agent.js
-import mongoose from 'mongoose';
-
-const agentSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  phoneNumber: { type: String, required: true }, // Ensure it's phoneNumber, matching the signup API
-  password: { type: String, required: true },
-  age: { type: Number, required: true },
-  address: { type: String, required: true },
-  isApproved: { type: Boolean, default: false }, // Awaiting approval
-  role: { type: String, default: 'agent' }, // Default role is 'agent'
-  createdAt: { type: Date, default: Date.now },
-});
-
-const Agent = mongoose.models.Agent || mongoose.model('Agent', agentSchema);
+  async save() {
+    const db = await connectToDatabase();
+    if (this.id) {
+      const [updated] = await db.update(agents).set(this).where(eq(agents.id, this.id)).returning();
+      return updated;
+    } else {
+      const [created] = await db.insert(agents).values(this).returning();
+      return created;
+    }
+  }
+}
 
 export default Agent;

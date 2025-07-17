@@ -26,7 +26,7 @@ export default function SearchablePropertyList({ properties }) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredProperties.length > 0 ? (
           filteredProperties.map((property) => (
-            <PropertyCard key={property._id} property={property} />
+            <PropertyCard key={property.id} property={property} />
           ))
         ) : (
           <p className="text-center text-gray-500 col-span-full">No properties found</p>

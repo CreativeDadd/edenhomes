@@ -1,77 +1,64 @@
 // app/models/Property.js
-import mongoose from 'mongoose';
+import connectToDatabase from '@/app/lib/database';
+import { properties } from '@/app/lib/schema';
+import { eq } from 'drizzle-orm';
 
-const propertySchema = new mongoose.Schema({
- 
+class Property {
+  static async create(propertyData) {
+    const db = await connectToDatabase();
+    const [property] = await db.insert(properties).values(propertyData).returning();
+    return property;
+  }
 
-  title: {type: String, required: true },
-  description: {
-    type: String,
-    required: true,
-  },
-  location: {
-    type: String,
-    required: true,
-  },
-  price: {
-    type: Number,
-    required: true,
-  },
-  discountPrice: {
-    type: Number,
-    required: true,
-  },
-  discountPercent: {
-    type: Number,
-    required: true,
-  },
-  imageUrl: { 
-    type: String, 
-    required: true, 
-  },
-  bedrooms: {
-    type: Number,
-    required: true,
-  },
-  bathrooms: {
-    type: Number,
-    required: true,
-  },
-  kitchenImageUrl: {
-    type: String,
-    required: true,
-  },
-  frontImageUrl: {
-    type: String,
-    required: true,
-  },
-  compoundImageUrl: {
-    type: String,
-    required: true,
-  },
-  sittingRoomImageUrl: {
-    type: String,
-    required: true,
-  },
-  specialPlaceImageUrl: {
-    type: String,
-    required: false,
-  },
-  agentId:  { type: mongoose.Schema.Types.ObjectId, ref: 'Agent', required: false },
+  static async find(query = {}) {
+    const db = await connectToDatabase();
+    
+    if (query.agentId) {
+      return await db.select().from(properties).where(eq(properties.agentId, query.agentId));
+    }
+    
+    if (query.status) {
+      return await db.select().from(properties).where(eq(properties.status, query.status));
+    }
+    
+    return await db.select().from(properties);
+  }
 
-  status: {
-    type: String,
-    enum: ['pending', 'approved', 'rejected'], 
-    default: 'pending',
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now, 
-  },
-});
+  static async findById(id) {
+    const db = await connectToDatabase();
+    const [property] = await db.select().from(properties).where(eq(properties.id, id));
+    return property || null;
+  }
 
-// const Property = mongoose.models.Property || mongoose.model('Property', propertySchema);
-// export default Property;
-// export default mongoose.models.Blog || mongoose.model('Blog', BlogSchema);
-export default mongoose.models.Property || mongoose.model('Property', propertySchema);
+  static async findByIdAndUpdate(id, updates) {
+    const db = await connectToDatabase();
+    const [property] = await db.update(properties).set(updates).where(eq(properties.id, id)).returning();
+    return property;
+  }
+
+  static async findByIdAndDelete(id) {
+    const db = await connectToDatabase();
+    const [property] = await db.delete(properties).where(eq(properties.id, id)).returning();
+    return property;
+  }
+
+  static async updateById(id, updates) {
+    const db = await connectToDatabase();
+    const [property] = await db.update(properties).set(updates).where(eq(properties.id, id)).returning();
+    return property;
+  }
+
+  static async deleteById(id) {
+    const db = await connectToDatabase();
+    const [property] = await db.delete(properties).where(eq(properties.id, id)).returning();
+    return property;
+  }
+
+  // Add lean() method for compatibility
+  static async lean() {
+    return await Property.find();
+  }
+}
+
+export default Property;
 

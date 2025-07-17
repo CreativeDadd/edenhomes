@@ -67,13 +67,13 @@
 
 
 import { NextResponse } from 'next/server';
-import connectToDatabase from '../../lib/mongodb'; // Adjust path if needed
+import connectToDatabase from '../../lib/database'; // Updated path
 import Contact from '../../models/Contact'; // Adjust path if needed
 
 export async function GET() {
   try {
     await connectToDatabase();
-    const contacts = await Contact.find().sort({ createdAt: -1 }).lean();
+    const contacts = await Contact.find(); // PostgreSQL doesn't need .lean()
     return NextResponse.json(contacts); // Use NextResponse.json for JSON responses
   } catch (error) {
     console.error('Error fetching contacts:', error);
@@ -83,13 +83,12 @@ export async function GET() {
 
 export async function POST(req) {
   try {
-    await connectToDatabase(); // Connect to MongoDB
+    await connectToDatabase(); // Connect to PostgreSQL
 
     const data = await req.json(); // Parse request body
 
-    // Save the contact data to MongoDB
-    const newContact = new Contact(data);
-    await newContact.save();
+    // Save the contact data to PostgreSQL
+    const newContact = await Contact.create(data);
 
     return NextResponse.json({ message: 'Message sent successfully!' }, { status: 201 });
   } catch (error) {

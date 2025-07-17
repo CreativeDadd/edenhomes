@@ -1,6 +1,6 @@
 // app/api/properties/route.js
 // app/api/agent/properties/route.js
-import connectToDatabase from '@/app/lib/mongodb';
+import connectToDatabase from '@/app/lib/database';
 import Property from '@/app/models/Property';
 import { getSession } from 'next-auth/react';
 import { NextResponse } from 'next/server';
@@ -29,13 +29,13 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   await connectToDatabase();
-  const properties = await Property.find({}).lean();
+  const properties = await Property.find({});
 
   const serializedProperties = properties.map((property) => ({
     ...property,
-    _id: property._id.toString(),
-    createdAt: property.createdAt.toISOString(),
-    agentId: property.agentId ? property.agentId.toString() : null,
+    id: property.id, // PostgreSQL uses 'id' instead of '_id'
+    createdAt: property.createdAt ? property.createdAt.toISOString() : new Date().toISOString(),
+    agentId: property.agentId || null,
   }));
 
   return NextResponse.json(serializedProperties);

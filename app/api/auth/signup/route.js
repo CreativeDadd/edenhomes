@@ -120,7 +120,7 @@
 // /app/api/auth/signup/route.js
 import bcrypt from 'bcryptjs';
 import Agent from '@/app/models/Agent';
-import connectToDatabase from '@/app/lib/mongodb';
+import connectToDatabase from '@/app/lib/database';
 
 export async function POST(req) {
   const { name, email, phone, address, age, password, role } = await req.json();
@@ -141,7 +141,7 @@ export async function POST(req) {
   const hashedPassword = await bcrypt.hash(password, 12);
 
   // Create new agent
-  const agent = new Agent({
+  const agent = await Agent.create({
     name,
     email,
     phoneNumber: phone, // Use consistent naming in the schema
@@ -151,7 +151,6 @@ export async function POST(req) {
     role: 'agent',
     isApproved: false, // Default is false, awaiting admin approval
   });
-  await agent.save();
 
   return new Response(JSON.stringify({ message: 'Signup successful! Awaiting admin approval.' }), { status: 201 });
 }

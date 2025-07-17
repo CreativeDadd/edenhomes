@@ -63,21 +63,29 @@
 
 
 
-import connectToDatabase from '@/app/lib/mongodb';
+import connectToDatabase from '@/app/lib/database';
 import Property from '@/app/models/Property';
 import SearchablePropertyList from '../components/SearchablePropertyList';
 
 export default async function HomePage() {
-  await connectToDatabase();
+  const db = await connectToDatabase();
+  let properties = [];
 
-  // Fetch properties as plain JavaScript objects and serialize fields
-  const properties = await Property.find({}).lean();
+  if (db) {
+    try {
+      // Fetch properties as plain JavaScript objects and serialize fields
+      properties = await Property.find({});
+    } catch (error) {
+      console.error('Error fetching properties:', error);
+      properties = [];
+    }
+  }
 
   const serializedProperties = properties.map((property) => ({
     ...property,
-    _id: property._id.toString(),
-    createdAt: property.createdAt.toISOString(),
-    agentId: property.agentId ? property.agentId.toString() : null,
+    id: property.id, // PostgreSQL uses id instead of _id
+    createdAt: property.createdAt?.toISOString() || null,
+    agentId: property.agentId || null,
   }));
 
   return (
