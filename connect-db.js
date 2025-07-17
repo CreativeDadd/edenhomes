@@ -1,6 +1,10 @@
 // connect-db.js - Database Connection Setup Helper
 import { Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
+import dotenv from 'dotenv';
+
+// Load environment variables
+dotenv.config();
 
 // Test database connection
 async function testConnection() {

@@ -326,10 +326,10 @@
 
 // /api/auth/[...nextauth]/route.js
 import NextAuth from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
-import User from '@/app/models/User'; // Ensure this points to your correct model
+import { default as CredentialsProvider } from 'next-auth/providers/credentials';
+import User from '@/app/models/User';
 import bcrypt from 'bcryptjs';
-import connectToDatabase from '@/app/lib/database';
+import { db } from '@/app/lib/database';
 
 export const authOptions = {
   providers: [
@@ -340,38 +340,39 @@ export const authOptions = {
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        const db = await connectToDatabase();
-        if (!db) {
-          throw new Error('Database connection failed');
+        try {
+          // Find user by email
+          const user = await User.findByEmail(credentials.email);
+
+          if (!user) {
+            throw new Error('No user found with that email');
+          }
+
+          const isPasswordValid = await bcrypt.compare(credentials.password, user.password);
+
+          if (!isPasswordValid) {
+            throw new Error('Invalid password');
+          }
+
+          if (user.role !== 'admin') {
+            throw new Error('Unauthorized. Admins only.');
+          }
+
+          return {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            role: user.role
+          };
+        } catch (error) {
+          console.error('Auth error:', error);
+          return null;
         }
-
-        const user = await User.findOne({ email: credentials.email });
-
-        if (!user) {
-          throw new Error('No user found with that email');
-        }
-
-        const isPasswordValid = await bcrypt.compare(credentials.password, user.password);
-
-        if (!isPasswordValid) {
-          throw new Error('Invalid password');
-        }
-
-        if (user.role !== 'admin') {
-          throw new Error('Unauthorized. Admins only.');
-        }
-
-        return {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          role: user.role
-        };
       },
     }),
   ],
   pages: {
-    signIn: '/admin/asdemcirnret', // The secret admin login page
+    signIn: '/admin/asdemcirnret',
   },
   session: {
     strategy: 'jwt',
@@ -389,6 +390,7 @@ export const authOptions = {
       return token;
     },
   },
+  secret: process.env.NEXTAUTH_SECRET,
 };
 
 const handler = NextAuth(authOptions);
